@@ -13,10 +13,13 @@ from modules.health import health_knowledge
 from modules.disaster import disaster_knowledge
 
 from modules.community import community_knowledge
+from modules.education import education_knowledge
+
 
 # ==========================
 # REGISTER MODULES
 # ==========================
+
 
 modules = {
 
@@ -28,12 +31,11 @@ modules = {
 
     "disaster": disaster_knowledge,
 
-    "community": community_knowledge
+    "community": community_knowledge,
+
+    "education": education_knowledge
 
 }
-
-
-
 # ==========================
 # COMBINE ALL KNOWLEDGE
 # ==========================
