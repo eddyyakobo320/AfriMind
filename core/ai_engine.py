@@ -1,32 +1,27 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 16.1
-# Professional Intelligence Architecture
+# Version 16.2 Professional
+# Main Intelligence Processing System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
 
 
-"""
-This file contains the main intelligence
-engine of AfriMind AI.
-
-It manages:
-- Question processing
-- Answer generation
-- Future AI modules
-"""
+from knowledge import knowledge
 
 
-# ==========================
-# CLEAN QUESTION
-# ==========================
+
+# ==========================================
+# QUESTION CLEANER
+# ==========================================
 
 def clean_question(question):
+    """
+    Cleans user input before processing.
+    """
 
-    """
-    Prepare user question
-    """
+    if not isinstance(question, str):
+        return ""
 
     question = question.lower()
 
@@ -38,34 +33,69 @@ def clean_question(question):
 
 
 
-# ==========================
-# MAIN AI ENGINE
-# ==========================
+# ==========================================
+# KNOWLEDGE SEARCH ENGINE
+# ==========================================
+
+def search_knowledge(question):
+    """
+    Searches AfriMind knowledge base.
+    """
+
+    if question in knowledge:
+
+        return knowledge[question]
+
+    return None
+
+
+
+# ==========================================
+# MAIN AFRIMIND BRAIN
+# ==========================================
 
 def ask_question(question):
-
     """
-    Main AfriMind thinking function
+    Main function that receives user questions
+    and generates AfriMind responses.
     """
 
-    question = clean_question(
-        question
-    )
+
+    question = clean_question(question)
 
 
-    # Temporary response
-    # Will connect with:
-    # database
-    # knowledge
-    # memory
-    # modules
+    if question == "":
 
-    if question == "hello":
+        return "Please enter a valid question."
 
-        return "Hello! I am AfriMind AI."
+
+
+    answer = search_knowledge(question)
+
+
+    if answer:
+
+        return answer
+
 
 
     return (
-        "AfriMind Core Engine Version 16.1 "
-        "is running successfully."
+        "I don't know the answer yet. "
+        "Please teach me so I can learn."
+    )
+
+
+
+# ==========================================
+# SYSTEM TEST
+# ==========================================
+
+if __name__ == "__main__":
+
+    print(
+        "AfriMind Core Engine Version 16.2 is running successfully."
+    )
+
+    print(
+        ask_question("what is afrimind")
     )
