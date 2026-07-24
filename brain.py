@@ -1,6 +1,6 @@
 # ==========================================
 # AfriMind Brain
-# Version 9.0 Intelligent Module System
+# Version 13.2 Intelligent Memory System
 # Main Intelligence Engine
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
@@ -13,21 +13,31 @@ from database import (
     create_database
 )
 
+
 from knowledge import knowledge
 
+
 from swahili_knowledge import swahili_knowledge
+
 
 from modules.module_manager import (
     get_all_module_knowledge
 )
 
+
 from search_engine import find_best_match
+
 
 from language import get_greeting
 
 
+from long_memory import recall_information
 
-# Create database when brain starts
+
+
+# ==========================
+# CREATE DATABASE
+# ==========================
 
 create_database()
 
@@ -64,7 +74,9 @@ def clean_question(question):
 def ask_question(question):
 
 
-    question = clean_question(question)
+    question = clean_question(
+        question
+    )
 
 
 
@@ -72,7 +84,9 @@ def ask_question(question):
     # GREETING SYSTEM
     # ======================
 
-    greeting = get_greeting(question)
+    greeting = get_greeting(
+        question
+    )
 
 
     if greeting:
@@ -85,7 +99,9 @@ def ask_question(question):
     # DATABASE SEARCH
     # ======================
 
-    answer = get_answer(question)
+    answer = get_answer(
+        question
+    )
 
 
     if answer:
@@ -103,10 +119,12 @@ def ask_question(question):
 
         answer = knowledge[question]
 
+
         add_knowledge(
             question,
             answer
         )
+
 
         return answer
 
@@ -127,6 +145,7 @@ def ask_question(question):
             answer
         )
 
+
         return answer
 
 
@@ -145,6 +164,7 @@ def ask_question(question):
             question,
             answer
         )
+
 
         return answer
 
@@ -199,6 +219,21 @@ def ask_question(question):
 
 
         return answer
+
+
+
+    # ======================
+    # LONG MEMORY SEARCH
+    # ======================
+
+    memory_answer = recall_information(
+        question
+    )
+
+
+    if memory_answer:
+
+        return memory_answer
 
 
 

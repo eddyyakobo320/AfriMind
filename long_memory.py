@@ -1,20 +1,22 @@
 # ==========================================
 # AfriMind Long Term Memory System
-# Version 1.0
+# Version 2.0
+# Intelligent Memory Architecture
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
 
 
 from database import connect_database
+from datetime import datetime
 
 
+
+# ==========================
+# CREATE MEMORY TABLE
+# ==========================
 
 def create_memory_table():
-
-    """
-    Create user memory table
-    """
 
     connection = connect_database()
 
@@ -28,7 +30,11 @@ def create_memory_table():
 
         key TEXT UNIQUE,
 
-        value TEXT
+        value TEXT,
+
+        memory_type TEXT,
+
+        created_at TEXT
 
     )
     """)
@@ -40,31 +46,39 @@ def create_memory_table():
 
 
 
+# ==========================
+# SAVE MEMORY
+# ==========================
 
-
-def remember_information(key, value):
-
-    """
-    Save information in long memory
-    """
+def remember_information(key, value, memory_type="knowledge"):
 
     connection = connect_database()
 
     cursor = connection.cursor()
 
 
+    date = datetime.now().strftime(
+        "%Y-%m-%d %H:%M:%S"
+    )
+
+
     try:
 
         cursor.execute(
             """
-            INSERT INTO user_memory(key, value)
-            VALUES(?, ?)
+            INSERT INTO user_memory
+            (key,value,memory_type,created_at)
+
+            VALUES(?,?,?,?)
             """,
-            (key, value)
+
+            (
+                key,
+                value,
+                memory_type,
+                date
+            )
         )
-
-
-        connection.commit()
 
 
     except:
@@ -72,27 +86,34 @@ def remember_information(key, value):
         cursor.execute(
             """
             UPDATE user_memory
-            SET value = ?
-            WHERE key = ?
+
+            SET value=?,
+                memory_type=?,
+                created_at=?
+
+            WHERE key=?
             """,
-            (value, key)
+
+            (
+                value,
+                memory_type,
+                date,
+                key
+            )
         )
 
 
-        connection.commit()
-
+    connection.commit()
 
     connection.close()
 
 
 
-
+# ==========================
+# READ MEMORY
+# ==========================
 
 def recall_information(key):
-
-    """
-    Get information from memory
-    """
 
     connection = connect_database()
 
@@ -103,8 +124,10 @@ def recall_information(key):
         """
         SELECT value
         FROM user_memory
-        WHERE key = ?
+
+        WHERE key=?
         """,
+
         (key,)
     )
 
@@ -124,8 +147,99 @@ def recall_information(key):
 
 
 
+# ==========================
+# SEARCH MEMORY
+# ==========================
+
+def search_memory(word):
+
+    connection = connect_database()
+
+    cursor = connection.cursor()
 
 
-# Create memory table automatically
+    cursor.execute(
+        """
+        SELECT key,value
+        FROM user_memory
+
+        WHERE key LIKE ?
+        OR value LIKE ?
+        """,
+
+        (
+            "%" + word + "%",
+            "%" + word + "%"
+        )
+    )
+
+
+    results = cursor.fetchall()
+
+
+    connection.close()
+
+
+    return results
+
+
+
+# ==========================
+# DELETE MEMORY
+# ==========================
+
+def forget_information(key):
+
+    connection = connect_database()
+
+    cursor = connection.cursor()
+
+
+    cursor.execute(
+        """
+        DELETE FROM user_memory
+
+        WHERE key=?
+        """,
+
+        (key,)
+    )
+
+
+    connection.commit()
+
+    connection.close()
+
+
+
+# ==========================
+# GET ALL MEMORY
+# ==========================
+
+def get_all_information():
+
+    connection = connect_database()
+
+    cursor = connection.cursor()
+
+
+    cursor.execute(
+        """
+        SELECT * FROM user_memory
+        """
+    )
+
+
+    results = cursor.fetchall()
+
+
+    connection.close()
+
+
+    return results
+
+
+
+# CREATE TABLE AUTOMATICALLY
 
 create_memory_table()
