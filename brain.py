@@ -1,10 +1,11 @@
 # ==========================================
 # AfriMind Brain
-# Version 8.1 Intelligent System
+# Version 9.0 Intelligent Module System
 # Main Intelligence Engine
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
+
 
 from database import (
     get_answer,
@@ -13,21 +14,31 @@ from database import (
 )
 
 from knowledge import knowledge
+
 from swahili_knowledge import swahili_knowledge
 
-from modules.agriculture import agriculture_knowledge
-from modules.business import business_knowledge
-from modules.health import health_knowledge
+from modules.module_manager import (
+    get_all_module_knowledge
+)
 
 from search_engine import find_best_match
+
 from language import get_greeting
 
 
-# ==========================
-# CREATE DATABASE
-# ==========================
+
+# Create database when brain starts
 
 create_database()
+
+
+
+# ==========================
+# LOAD ALL MODULES
+# ==========================
+
+module_knowledge = get_all_module_knowledge()
+
 
 
 # ==========================
@@ -37,10 +48,13 @@ create_database()
 def clean_question(question):
 
     question = question.lower()
+
     question = question.strip()
+
     question = question.replace("?", "")
 
     return question
+
 
 
 # ==========================
@@ -49,25 +63,36 @@ def clean_question(question):
 
 def ask_question(question):
 
+
     question = clean_question(question)
 
+
+
     # ======================
-    # GREETING
+    # GREETING SYSTEM
     # ======================
 
     greeting = get_greeting(question)
 
+
     if greeting:
+
         return greeting
 
+
+
     # ======================
-    # DATABASE
+    # DATABASE SEARCH
     # ======================
 
     answer = get_answer(question)
 
+
     if answer:
+
         return answer
+
+
 
     # ======================
     # ENGLISH KNOWLEDGE
@@ -75,11 +100,17 @@ def ask_question(question):
 
     if question in knowledge:
 
+
         answer = knowledge[question]
 
-        add_knowledge(question, answer)
+        add_knowledge(
+            question,
+            answer
+        )
 
         return answer
+
+
 
     # ======================
     # SWAHILI KNOWLEDGE
@@ -87,117 +118,89 @@ def ask_question(question):
 
     if question in swahili_knowledge:
 
+
         answer = swahili_knowledge[question]
 
-        add_knowledge(question, answer)
+
+        add_knowledge(
+            question,
+            answer
+        )
 
         return answer
 
+
+
     # ======================
-    # AGRICULTURE MODULE
+    # MODULE KNOWLEDGE
     # ======================
 
-    if question in agriculture_knowledge:
+    if question in module_knowledge:
 
-        answer = agriculture_knowledge[question]
 
-        add_knowledge(question, answer)
+        answer = module_knowledge[question]
+
+
+        add_knowledge(
+            question,
+            answer
+        )
 
         return answer
 
-    # ======================
-    # BUSINESS MODULE
-    # ======================
 
-    if question in business_knowledge:
-
-        answer = business_knowledge[question]
-
-        add_knowledge(question, answer)
-
-        return answer
 
     # ======================
-    # HEALTH MODULE
+    # SMART SEARCH MODULES
     # ======================
 
-    if question in health_knowledge:
+    best_match = find_best_match(
+        question,
+        module_knowledge
+    )
 
-        answer = health_knowledge[question]
-
-        add_knowledge(question, answer)
-
-        return answer
-
-    # ======================
-    # SMART SEARCH ENGLISH
-    # ======================
-
-    best_match = find_best_match(question, knowledge)
 
     if best_match:
+
+
+        answer = module_knowledge[best_match]
+
+
+        add_knowledge(
+            best_match,
+            answer
+        )
+
+
+        return answer
+
+
+
+    # ======================
+    # SMART SEARCH GENERAL
+    # ======================
+
+    best_match = find_best_match(
+        question,
+        knowledge
+    )
+
+
+    if best_match:
+
 
         answer = knowledge[best_match]
 
-        add_knowledge(best_match, answer)
+
+        add_knowledge(
+            best_match,
+            answer
+        )
+
 
         return answer
 
-    # ======================
-    # SMART SEARCH SWAHILI
-    # ======================
 
-    best_match = find_best_match(question, swahili_knowledge)
-
-    if best_match:
-
-        answer = swahili_knowledge[best_match]
-
-        add_knowledge(best_match, answer)
-
-        return answer
-
-    # ======================
-    # SMART SEARCH AGRICULTURE
-    # ======================
-
-    best_match = find_best_match(question, agriculture_knowledge)
-
-    if best_match:
-
-        answer = agriculture_knowledge[best_match]
-
-        add_knowledge(best_match, answer)
-
-        return answer
-
-    # ======================
-    # SMART SEARCH BUSINESS
-    # ======================
-
-    best_match = find_best_match(question, business_knowledge)
-
-    if best_match:
-
-        answer = business_knowledge[best_match]
-
-        add_knowledge(best_match, answer)
-
-        return answer
-
-    # ======================
-    # SMART SEARCH HEALTH
-    # ======================
-
-    best_match = find_best_match(question, health_knowledge)
-
-    if best_match:
-
-        answer = health_knowledge[best_match]
-
-        add_knowledge(best_match, answer)
-
-        return answer
 
     # ======================
     # LEARNING MODE
