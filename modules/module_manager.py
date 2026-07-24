@@ -12,7 +12,7 @@ from modules.business import business_knowledge
 from modules.health import health_knowledge
 from modules.disaster import disaster_knowledge
 
-
+from modules.community import community_knowledge
 
 # ==========================
 # REGISTER MODULES
@@ -26,7 +26,9 @@ modules = {
 
     "health": health_knowledge,
 
-    "disaster": disaster_knowledge
+    "disaster": disaster_knowledge,
+
+    "community": community_knowledge
 
 }
 
