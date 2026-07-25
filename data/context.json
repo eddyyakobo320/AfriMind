@@ -1,15 +1,5 @@
 [
     {
-        "time": "2026-07-25 15:56:16.321490",
-        "user": "what is my name",
-        "afrimind": "Your name is edward."
-    },
-    {
-        "time": "2026-07-25 15:56:38.274396",
-        "user": "what is climate change",
-        "afrimind": "Thank you. I have learned this information."
-    },
-    {
         "time": "2026-07-25 15:56:56.998784",
         "user": "what is climate change",
         "afrimind": "Climate change is the long term change of temperature and weather patterns."
@@ -98,5 +88,15 @@
         "time": "2026-07-25 17:14:07.732079",
         "user": "who is the president of Tanzania",
         "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
+    },
+    {
+        "time": "2026-07-25 17:22:37.284475",
+        "user": "hello",
+        "afrimind": "Hello! \ud83d\udc4b\nI am AfriMind AI, an intelligent assistant built to provide knowledge and solutions for Africa."
+    },
+    {
+        "time": "2026-07-25 17:22:58.780880",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
     }
 ]

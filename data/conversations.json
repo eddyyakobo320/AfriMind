@@ -1,175 +1,22 @@
 [
     {
-        "time": "2026-07-25 11:39:20.791467",
+        "time": "2026-07-25 17:22:37.286632",
         "user": "hello",
-        "afrimind": "Hello! I am AfriMind AI. How can I help you today?"
+        "afrimind": "Hello! 👋\nI am AfriMind AI, an intelligent assistant built to provide knowledge and solutions for Africa."
     },
     {
-        "time": "2026-07-25 11:46:59.592805",
+        "time": "2026-07-25 17:22:37.289141",
         "user": "hello",
-        "afrimind": "Hello! I am AfriMind AI. How can I help you today?"
+        "afrimind": "Hello! 👋\nI am AfriMind AI, an intelligent assistant built to provide knowledge and solutions for Africa."
     },
     {
-        "time": "2026-07-25 11:48:29.982106",
-        "user": "exit()",
-        "afrimind": "I am still learning. Please ask me another question."
-    },
-    {
-        "time": "2026-07-25 11:49:07.265603",
-        "user": "exit()",
-        "afrimind": "I am still learning. Please ask me another question."
-    },
-    {
-        "user": "hello AfriMind",
-        "assistant": "Hello Edward"
-    },
-    {
-        "user": "what is agriculture",
-        "assistant": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 16:13:03.005727",
-        "user": "hello AfriMind",
-        "afrimind": "Hello Edward"
-    },
-    {
-        "time": "2026-07-25 16:23:02.852858",
+        "time": "2026-07-25 17:22:58.782587",
         "user": "what is agriculture",
         "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
     },
     {
-        "time": "2026-07-25 16:23:20.834968",
-        "user": "who is the president of Tanzania",
-        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
-    },
-    {
-        "time": "2026-07-25 16:31:22.901105",
+        "time": "2026-07-25 17:22:58.783810",
         "user": "what is agriculture",
         "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 16:31:22.906422",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 16:40:56.692505",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 16:40:56.696628",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 16:42:16.924508",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 16:42:16.928319",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 16:43:04.486631",
-        "user": "git status",
-        "afrimind": "I don't know the answer yet."
-    },
-    {
-        "time": "2026-07-25 16:43:04.491509",
-        "user": "git status",
-        "afrimind": "I don't know the answer yet."
-    },
-    {
-        "time": "2026-07-25 16:50:52.142375",
-        "user": " what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 16:50:52.147690",
-        "user": " what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 16:51:08.013656",
-        "user": "who is the president of Tanzania",
-        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
-    },
-    {
-        "time": "2026-07-25 16:51:08.017990",
-        "user": "who is the president of Tanzania",
-        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
-    },
-    {
-        "time": "2026-07-25 16:58:34.135613",
-        "user": "what is artificial intelligence",
-        "afrimind": "Artificial Intelligence is the ability of machines to learn, reason, and solve problems."
-    },
-    {
-        "time": "2026-07-25 16:58:34.141750",
-        "user": "what is artificial intelligence",
-        "afrimind": "Artificial Intelligence is the ability of machines to learn, reason, and solve problems."
-    },
-    {
-        "time": "2026-07-25 16:58:43.848123",
-        "user": "what is climate change",
-        "afrimind": "Climate change is the long term change of temperature and weather patterns."
-    },
-    {
-        "time": "2026-07-25 16:58:43.852804",
-        "user": "what is climate change",
-        "afrimind": "Climate change is the long term change of temperature and weather patterns."
-    },
-    {
-        "time": "2026-07-25 16:58:56.948669",
-        "user": "my name is Edward",
-        "afrimind": "Nice to meet you edward. I will remember your name."
-    },
-    {
-        "time": "2026-07-25 16:58:56.953192",
-        "user": "my name is Edward",
-        "afrimind": "Nice to meet you edward. I will remember your name."
-    },
-    {
-        "time": "2026-07-25 16:59:08.883265",
-        "user": "what is cybersecurity",
-        "afrimind": "Cybersecurity is the practice of protecting computers, networks, and information from cyber attacks."
-    },
-    {
-        "time": "2026-07-25 16:59:08.888320",
-        "user": "what is cybersecurity",
-        "afrimind": "Cybersecurity is the practice of protecting computers, networks, and information from cyber attacks."
-    },
-    {
-        "time": "2026-07-25 17:13:26.816551",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 17:13:26.821802",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 17:13:51.529500",
-        "user": "who is the president of Tanzania",
-        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
-    },
-    {
-        "time": "2026-07-25 17:13:51.533424",
-        "user": "who is the president of Tanzania",
-        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
-    },
-    {
-        "time": "2026-07-25 17:14:07.739277",
-        "user": "who is the president of Tanzania",
-        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
-    },
-    {
-        "time": "2026-07-25 17:14:07.745508",
-        "user": "who is the president of Tanzania",
-        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
     }
 ]
