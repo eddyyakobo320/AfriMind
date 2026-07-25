@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 16.2 Professional
-# Main Intelligence Processing System
+# Version 16.4
+# Memory Integration System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -9,19 +9,18 @@
 
 from knowledge import knowledge
 
+from core.memory_engine import (
+    remember,
+    recall
+)
+
 
 
 # ==========================================
-# QUESTION CLEANER
+# CLEAN QUESTION
 # ==========================================
 
 def clean_question(question):
-    """
-    Cleans user input before processing.
-    """
-
-    if not isinstance(question, str):
-        return ""
 
     question = question.lower()
 
@@ -34,68 +33,115 @@ def clean_question(question):
 
 
 # ==========================================
-# KNOWLEDGE SEARCH ENGINE
+# MEMORY LEARNING
 # ==========================================
 
-def search_knowledge(question):
-    """
-    Searches AfriMind knowledge base.
-    """
+def check_memory_learning(question):
 
-    if question in knowledge:
 
-        return knowledge[question]
+    # Example:
+    # my name is Edward
+
+
+    if question.startswith("my name is"):
+
+
+        name = question.replace(
+            "my name is",
+            ""
+        ).strip()
+
+
+        # Make first letter capital
+
+        name = name.capitalize()
+
+
+        remember(
+            "user_name",
+            name
+        )
+
+
+        return (
+            f"Nice to meet you {name}. "
+            "I will remember your name."
+        )
+
 
     return None
 
 
 
 # ==========================================
-# MAIN AFRIMIND BRAIN
+# ASK AFRIMIND
 # ==========================================
 
 def ask_question(question):
-    """
-    Main function that receives user questions
-    and generates AfriMind responses.
-    """
 
 
-    question = clean_question(question)
-
-
-    if question == "":
-
-        return "Please enter a valid question."
+    question = clean_question(
+        question
+    )
 
 
 
-    answer = search_knowledge(question)
+    # ==========================
+    # CHECK NEW MEMORY
+    # ==========================
+
+    memory_learning = check_memory_learning(
+        question
+    )
 
 
-    if answer:
+    if memory_learning:
 
-        return answer
+        return memory_learning
 
 
+
+    # ==========================
+    # RECALL MEMORY
+    # ==========================
+
+    if question == "what is my name":
+
+
+        name = recall(
+            "user_name"
+        )
+
+
+        if name:
+
+            return (
+                f"Your name is {name}."
+            )
+
+
+        return (
+            "I don't know your name yet."
+        )
+
+
+
+    # ==========================
+    # KNOWLEDGE SEARCH
+    # ==========================
+
+    if question in knowledge:
+
+
+        return knowledge[question]
+
+
+
+    # ==========================
+    # UNKNOWN QUESTION
+    # ==========================
 
     return (
         "I don't know the answer yet. "
-        "Please teach me so I can learn."
-    )
-
-
-
-# ==========================================
-# SYSTEM TEST
-# ==========================================
-
-if __name__ == "__main__":
-
-    print(
-        "AfriMind Core Engine Version 16.2 is running successfully."
-    )
-
-    print(
-        ask_question("what is afrimind")
+        "Please teach me."
     )
