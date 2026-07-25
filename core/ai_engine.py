@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 16.7
-# Learning Integration System
+# Version 16.8
+# Personality Integration System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -9,14 +9,21 @@
 
 from knowledge import knowledge
 
+
 from core.memory_engine import (
     remember,
     recall
 )
 
+
 from core.learning_engine import (
-    teach_afrimind,
-    get_learned_answer
+    get_learned_answer,
+    teach_afrimind
+)
+
+
+from core.personality_engine import (
+    get_personality_response
 )
 
 
@@ -83,7 +90,22 @@ def ask_question(question):
 
 
     # ==========================
-    # CHECK MEMORY LEARNING
+    # PERSONALITY CHECK
+    # ==========================
+
+    personality = get_personality_response(
+        question
+    )
+
+
+    if personality:
+
+        return personality
+
+
+
+    # ==========================
+    # MEMORY LEARNING
     # ==========================
 
     memory_learning = check_memory_learning(
@@ -98,7 +120,7 @@ def ask_question(question):
 
 
     # ==========================
-    # RECALL NAME
+    # REMEMBER USER NAME
     # ==========================
 
     if question == "what is my name":
@@ -116,9 +138,14 @@ def ask_question(question):
             )
 
 
+        return (
+            "I don't know your name yet."
+        )
+
+
 
     # ==========================
-    # LEARNED KNOWLEDGE SEARCH
+    # LEARNED KNOWLEDGE
     # ==========================
 
     learned_answer = get_learned_answer(
@@ -133,7 +160,7 @@ def ask_question(question):
 
 
     # ==========================
-    # MAIN KNOWLEDGE SEARCH
+    # MAIN KNOWLEDGE
     # ==========================
 
     if question in knowledge:
@@ -143,7 +170,7 @@ def ask_question(question):
 
 
     # ==========================
-    # UNKNOWN QUESTION
+    # UNKNOWN
     # ==========================
 
     return (
@@ -158,10 +185,6 @@ def ask_question(question):
 # ==========================================
 
 def teach(question, answer):
-
-    question = clean_question(
-        question
-    )
 
 
     return teach_afrimind(
