@@ -1,6 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 17.4
+# Version 18.1
+# Knowledge Engine Integration
 # Automatic Modular Intelligence System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
@@ -39,6 +40,11 @@ from core.decision_engine import (
 
 from core.module_manager import (
     get_module_answer
+)
+
+
+from core.knowledge_engine import (
+    search_knowledge
 )
 
 
@@ -229,7 +235,23 @@ def ask_question(question):
 
 
 
-    # 5. Learning Memory
+    # 5. Knowledge Engine
+
+    answer = search_knowledge(
+        question
+    )
+
+
+    if answer:
+
+        return respond(
+            original,
+            answer
+        )
+
+
+
+    # 6. Learning Memory
 
     answer = get_learned_answer(
         question
@@ -245,7 +267,7 @@ def ask_question(question):
 
 
 
-    # 6. Main Knowledge
+    # 7. Main Knowledge
 
     if question in knowledge:
 
@@ -257,7 +279,7 @@ def ask_question(question):
 
 
 
-    # 7. Unknown
+    # 8. Unknown Question
 
     return respond(
         original,
