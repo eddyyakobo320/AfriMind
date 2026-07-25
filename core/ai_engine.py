@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 16.8
-# Personality Integration System
+# Version 16.9.2
+# Professional Brain Refactor
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -9,55 +9,71 @@
 
 from knowledge import knowledge
 
-
 from core.memory_engine import (
     remember,
     recall
 )
-
 
 from core.learning_engine import (
     get_learned_answer,
     teach_afrimind
 )
 
-
 from core.personality_engine import (
     get_personality_response
+)
+
+from core.context_engine import (
+    save_context
 )
 
 
 
 # ==========================================
-# CLEAN QUESTION
+# TEXT PROCESSING
 # ==========================================
 
 def clean_question(question):
 
-    question = question.lower()
-
-    question = question.strip()
-
-    question = question.replace("?", "")
-
-    return question
+    return (
+        question
+        .lower()
+        .strip()
+        .replace("?", "")
+    )
 
 
 
 # ==========================================
-# MEMORY LEARNING
+# RESPONSE HANDLER
 # ==========================================
 
-def check_memory_learning(question):
+def send_response(question, answer):
+
+    save_context(
+        question,
+        answer
+    )
+
+    return answer
+
+
+
+# ==========================================
+# MEMORY SYSTEM
+# ==========================================
+
+def remember_name(question):
 
 
     if question.startswith("my name is"):
 
 
-        name = question.replace(
-            "my name is",
-            ""
-        ).strip()
+        name = (
+            question
+            .replace("my name is", "")
+            .strip()
+        )
 
 
         remember(
@@ -77,10 +93,13 @@ def check_memory_learning(question):
 
 
 # ==========================================
-# ASK AFRIMIND
+# AFRIMIND BRAIN
 # ==========================================
 
 def ask_question(question):
+
+
+    original = question
 
 
     question = clean_question(
@@ -88,40 +107,35 @@ def ask_question(question):
     )
 
 
+    # Personality
 
-    # ==========================
-    # PERSONALITY CHECK
-    # ==========================
-
-    personality = get_personality_response(
+    response = get_personality_response(
         question
     )
 
+    if response:
+        return send_response(
+            original,
+            response
+        )
 
-    if personality:
-
-        return personality
 
 
+    # Memory learning
 
-    # ==========================
-    # MEMORY LEARNING
-    # ==========================
-
-    memory_learning = check_memory_learning(
+    response = remember_name(
         question
     )
 
+    if response:
+        return send_response(
+            original,
+            response
+        )
 
-    if memory_learning:
-
-        return memory_learning
 
 
-
-    # ==========================
-    # REMEMBER USER NAME
-    # ==========================
+    # User memory
 
     if question == "what is my name":
 
@@ -131,63 +145,69 @@ def ask_question(question):
         )
 
 
-        if name:
-
-            return (
-                f"Your name is {name}."
-            )
-
-
-        return (
+        response = (
+            f"Your name is {name}."
+            if name
+            else
             "I don't know your name yet."
         )
 
 
+        return send_response(
+            original,
+            response
+        )
 
-    # ==========================
-    # LEARNED KNOWLEDGE
-    # ==========================
 
-    learned_answer = get_learned_answer(
+
+    # Learned knowledge
+
+    response = get_learned_answer(
         question
     )
 
+    if response:
+        return send_response(
+            original,
+            response
+        )
 
-    if learned_answer:
-
-        return learned_answer
 
 
-
-    # ==========================
-    # MAIN KNOWLEDGE
-    # ==========================
+    # Main knowledge
 
     if question in knowledge:
 
-        return knowledge[question]
+        return send_response(
+            original,
+            knowledge[question]
+        )
 
 
 
-    # ==========================
-    # UNKNOWN
-    # ==========================
+    # Unknown
 
-    return (
-        "I don't know the answer yet. "
-        "Please teach me."
+    return send_response(
+        original,
+        "I don't know the answer yet. Please teach me."
     )
 
 
 
 # ==========================================
-# TEACH FUNCTION
+# LEARNING FUNCTION
 # ==========================================
 
 def teach(question, answer):
 
 
-    return teach_afrimind(
+    response = teach_afrimind(
         question,
         answer
+    )
+
+
+    return send_response(
+        question,
+        response
     )
