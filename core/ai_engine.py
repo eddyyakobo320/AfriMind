@@ -1,8 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 18.1
-# Knowledge Engine Integration
-# Automatic Modular Intelligence System
+# Version 20.0
+# Autonomous Modular Intelligence System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -14,12 +13,6 @@ from knowledge import knowledge
 from core.memory_engine import (
     remember,
     recall
-)
-
-
-from core.learning_engine import (
-    get_learned_answer,
-    teach_afrimind
 )
 
 
@@ -43,8 +36,20 @@ from core.module_manager import (
 )
 
 
+from core.learning_engine import (
+    get_learned_answer,
+    teach_afrimind
+)
+
+
 from core.knowledge_engine import (
-    search_knowledge
+    search_knowledge,
+    add_knowledge
+)
+
+
+from core.search_engine import (
+    get_search_answer
 )
 
 
@@ -65,7 +70,7 @@ def clean_question(question):
 
 
 # ==========================================
-# RESPONSE SYSTEM
+# RESPONSE HANDLER
 # ==========================================
 
 def respond(question, answer):
@@ -80,20 +85,19 @@ def respond(question, answer):
 
 
 # ==========================================
-# MEMORY SYSTEM
+# MEMORY HANDLER
 # ==========================================
 
-def handle_memory(question):
+def memory_system(question):
 
 
     if question.startswith("my name is"):
 
 
-        name = (
-            question
-            .replace("my name is", "")
-            .strip()
-        )
+        name = question.replace(
+            "my name is",
+            ""
+        ).strip()
 
 
         remember(
@@ -119,9 +123,7 @@ def handle_memory(question):
 
         if name:
 
-            return (
-                f"Your name is {name}."
-            )
+            return f"Your name is {name}."
 
 
         return (
@@ -134,20 +136,19 @@ def handle_memory(question):
 
 
 # ==========================================
-# PROBLEM DETECTION
+# DECISION CHECK
 # ==========================================
 
-def is_problem(question):
+def check_problem(question):
 
 
     keywords = [
 
         "problem",
-        "failing",
-        "failed",
         "challenge",
-        "tatizo",
-        "issue"
+        "failed",
+        "failing",
+        "tatizo"
 
     ]
 
@@ -160,7 +161,51 @@ def is_problem(question):
 
 
 # ==========================================
-# AFRIMIND BRAIN
+# AUTONOMOUS SEARCH BRAIN
+# ==========================================
+
+def autonomous_search(question):
+
+
+    # Search saved knowledge
+
+    answer = search_knowledge(
+        question
+    )
+
+
+    if answer:
+
+        return answer
+
+
+
+    # Search internet
+
+    answer = get_search_answer(
+        question
+    )
+
+
+    if answer:
+
+
+        add_knowledge(
+            question,
+            answer
+        )
+
+
+        return answer
+
+
+
+    return None
+
+
+
+# ==========================================
+# AFRIMIND MAIN BRAIN
 # ==========================================
 
 def ask_question(question):
@@ -175,7 +220,7 @@ def ask_question(question):
 
 
 
-    # 1. Personality Intelligence
+    # 1. Personality
 
     answer = get_personality_response(
         question
@@ -191,9 +236,9 @@ def ask_question(question):
 
 
 
-    # 2. Memory Intelligence
+    # 2. Memory
 
-    answer = handle_memory(
+    answer = memory_system(
         question
     )
 
@@ -207,7 +252,7 @@ def ask_question(question):
 
 
 
-    # 3. Automatic Knowledge Modules
+    # 3. Expert Modules
 
     answer = get_module_answer(
         question
@@ -223,26 +268,15 @@ def ask_question(question):
 
 
 
-    # 4. Decision Intelligence
+    # 4. Problem Solver
 
-    if is_problem(question):
+    if check_problem(question):
 
 
-        return respond(
-            original,
-            make_decision(question)
+        answer = make_decision(
+            question
         )
 
-
-
-    # 5. Knowledge Engine
-
-    answer = search_knowledge(
-        question
-    )
-
-
-    if answer:
 
         return respond(
             original,
@@ -251,7 +285,7 @@ def ask_question(question):
 
 
 
-    # 6. Learning Memory
+    # 5. Learned Knowledge
 
     answer = get_learned_answer(
         question
@@ -267,7 +301,7 @@ def ask_question(question):
 
 
 
-    # 7. Main Knowledge
+    # 6. Knowledge Database
 
     if question in knowledge:
 
@@ -279,11 +313,27 @@ def ask_question(question):
 
 
 
-    # 8. Unknown Question
+    # 7. Autonomous Internet Intelligence
+
+    answer = autonomous_search(
+        question
+    )
+
+
+    if answer:
+
+        return respond(
+            original,
+            answer
+        )
+
+
+
+    # 8. Unknown
 
     return respond(
         original,
-        "I don't know the answer yet. Please teach me."
+        "I don't know the answer yet."
     )
 
 
@@ -301,7 +351,10 @@ def teach(question, answer):
     )
 
 
-    return respond(
+    add_knowledge(
         question,
-        result
+        answer
     )
+
+
+    return result
