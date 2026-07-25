@@ -88,5 +88,17 @@
         "user": "what is renewable energy",
         "afrimind": "Renewable energy comes from natural sources like solar, wind and water.",
         "topic": "energy"
+    },
+    {
+        "time": "2026-07-25 23:44:56.977803",
+        "user": "what is farming",
+        "afrimind": "Farming is the practice of growing crops and keeping animals",
+        "topic": "farming"
+    },
+    {
+        "time": "2026-07-25 23:45:09.309024",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
+        "topic": "agriculture"
     }
 ]

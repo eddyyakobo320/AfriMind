@@ -7,11 +7,16 @@
     "what is agriculture": {
         "answer": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
         "learned_date": "2026-07-25 23:24:58.893439",
-        "usage": 2
+        "usage": 3
     },
     "what is renewable energy": {
         "answer": "Renewable energy comes from natural sources like solar, wind and water.",
         "learned_date": "2026-07-25 23:35:08.145877",
+        "usage": 1
+    },
+    "what is farming": {
+        "answer": "Farming is the practice of growing crops and keeping animals",
+        "learned_date": "2026-07-25 23:44:56.975673",
         "usage": 1
     }
 }

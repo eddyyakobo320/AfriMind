@@ -1,13 +1,10 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 27.4
-# Self Learning Integrated Intelligence System
+# Version 27.5
+# Knowledge Manager Integrated Brain
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
-
-
-from knowledge import knowledge
 
 
 from core.context_engine import (
@@ -36,15 +33,9 @@ from core.decision_engine import (
 )
 
 
-from core.learning_engine import (
-    get_learned_answer,
-    teach_afrimind
-)
-
-
-from core.knowledge_engine import (
-    search_knowledge,
-    add_knowledge
+from core.knowledge_manager import (
+    find_answer,
+    add_new_knowledge
 )
 
 
@@ -55,12 +46,6 @@ from core.search_engine import (
 
 from core.ranking_engine import (
     rank_answers
-)
-
-
-from core.self_learning import (
-    get_new_knowledge,
-    save_new_knowledge
 )
 
 
@@ -86,7 +71,7 @@ def clean_question(question):
 
 
 # ==========================================
-# RESPONSE HANDLER
+# SAVE RESPONSE
 # ==========================================
 
 def respond(question, answer):
@@ -96,51 +81,38 @@ def respond(question, answer):
         answer
     )
 
+
     save_conversation(
         question,
         answer
     )
+
 
     return answer
 
 
 
 # ==========================================
-# SEARCH BRAIN
+# SEARCH SYSTEM
 # ==========================================
 
 def search_brain(question):
 
+
     answers = []
 
 
-    local = search_knowledge(
+    web_answer = get_search_answer(
         question
     )
 
 
-    if local:
+    if web_answer:
 
         answers.append({
 
-            "answer": local,
-            "source": "local"
-
-        })
-
-
-
-    web = get_search_answer(
-        question
-    )
-
-
-    if web:
-
-        answers.append({
-
-            "answer": web,
-            "source": "web"
+            "answer": web_answer,
+            "source": "internet"
 
         })
 
@@ -172,46 +144,7 @@ def ask_question(question):
     )
 
 
-
-    # ======================================
-    # 1. SELF LEARNING MEMORY
-    # ======================================
-
-    learned = get_new_knowledge(
-        question
-    )
-
-
-    if learned:
-
-        return respond(
-            original,
-            learned
-        )
-
-
-
-    # ======================================
-    # 2. OLD LEARNING MEMORY
-    # ======================================
-
-    learned = get_learned_answer(
-        question
-    )
-
-
-    if learned:
-
-        return respond(
-            original,
-            learned
-        )
-
-
-
-    # ======================================
-    # 3. CONTEXT UNDERSTANDING
-    # ======================================
+    # 1. CONTEXT UNDERSTANDING
 
     context = understand_reference(
         question
@@ -220,13 +153,39 @@ def ask_question(question):
 
     if context:
 
-        question = context + " " + question
+        question = context
 
 
 
-    # ======================================
-    # 4. PERSONALITY
-    # ======================================
+    # 2. KNOWLEDGE MANAGER
+
+    answer = find_answer(
+        question
+    )
+
+
+    if answer:
+
+
+        if isinstance(answer, dict):
+
+            answer = answer["answer"]
+
+
+        record_knowledge(
+            question,
+            answer
+        )
+
+
+        return respond(
+            original,
+            answer
+        )
+
+
+
+    # 3. PERSONALITY
 
     answer = get_personality_response(
         question
@@ -235,15 +194,11 @@ def ask_question(question):
 
     if answer:
 
-        save_new_knowledge(
+        add_new_knowledge(
             question,
             answer
         )
 
-        record_knowledge(
-            question,
-            answer
-        )
 
         return respond(
             original,
@@ -252,9 +207,7 @@ def ask_question(question):
 
 
 
-    # ======================================
-    # 5. MODULES
-    # ======================================
+    # 4. MODULES
 
     answer = get_module_answer(
         question
@@ -263,35 +216,7 @@ def ask_question(question):
 
     if answer:
 
-        save_new_knowledge(
-            question,
-            answer
-        )
-
-        record_knowledge(
-            question,
-            answer
-        )
-
-
-        return respond(
-            original,
-            answer
-        )
-
-
-
-    # ======================================
-    # 6. INTERNAL KNOWLEDGE
-    # ======================================
-
-    if question in knowledge:
-
-
-        answer = knowledge[question]
-
-
-        save_new_knowledge(
+        add_new_knowledge(
             question,
             answer
         )
@@ -310,9 +235,7 @@ def ask_question(question):
 
 
 
-    # ======================================
-    # 7. INTERNET SEARCH
-    # ======================================
+    # 5. INTERNET SEARCH
 
     answer = search_brain(
         question
@@ -322,13 +245,7 @@ def ask_question(question):
     if answer:
 
 
-        add_knowledge(
-            question,
-            answer
-        )
-
-
-        save_new_knowledge(
+        add_new_knowledge(
             question,
             answer
         )
@@ -347,9 +264,7 @@ def ask_question(question):
 
 
 
-    # ======================================
-    # 8. PROBLEM SOLVER
-    # ======================================
+    # 6. DECISION ENGINE
 
     answer = make_decision(
         question
@@ -370,19 +285,7 @@ def ask_question(question):
 def teach(question, answer):
 
 
-    result = teach_afrimind(
-        question,
-        answer
-    )
-
-
-    add_knowledge(
-        question,
-        answer
-    )
-
-
-    save_new_knowledge(
+    add_new_knowledge(
         question,
         answer
     )
@@ -394,4 +297,7 @@ def teach(question, answer):
     )
 
 
-    return result
+    return respond(
+        question,
+        "I have learned this new information."
+    )

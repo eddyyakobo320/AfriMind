@@ -8,5 +8,10 @@
         "answer": "Farming is the practice of growing crops and keeping animals",
         "created": "2026-07-25 23:40:35.737197",
         "usage": 1
+    },
+    "what is agriculture": {
+        "answer": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
+        "created": "2026-07-25 23:45:09.306182",
+        "usage": 1
     }
 }
