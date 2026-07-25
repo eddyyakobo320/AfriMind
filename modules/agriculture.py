@@ -1,40 +1,61 @@
 # ==========================================
-# AfriMind Agriculture Module
-# Version 1.0
-# Agriculture Knowledge Base
+# AfriMind Agriculture Knowledge Module
+# Version 17.2
+# African Agriculture Intelligence
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
 
 
+# ==========================================
+# AGRICULTURE KNOWLEDGE
+# ==========================================
+
 agriculture_knowledge = {
 
 
-    "nini maana ya kilimo":
-    "Kilimo ni shughuli ya uzalishaji wa mazao na ufugaji wa wanyama kwa ajili ya chakula na rasilimali nyingine.",
-
-
     "what is agriculture":
-    "Agriculture is the practice of cultivating crops and raising animals for food and other resources.",
+    "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
 
 
-    "nini maana ya kilimo hai":
-    "Kilimo hai ni mfumo wa kilimo unaotumia njia za asili bila kutegemea sana kemikali za viwandani.",
+
+    "importance of agriculture":
+    "Agriculture provides food, creates employment, supports industries, generates income, and contributes to economic development.",
 
 
-    "what is irrigation":
-    "Irrigation is the artificial supply of water to crops to support plant growth.",
+
+    "types of agriculture":
+    "Types of agriculture include crop farming, livestock keeping, mixed farming, horticulture, and commercial farming.",
 
 
-    "nini maana ya umwagiliaji":
-    "Umwagiliaji ni njia ya kuongeza maji kwenye mashamba ili kusaidia ukuaji wa mazao.",
+
+    "how to improve farming":
+    "Farmers can improve production through quality seeds, proper land preparation, irrigation, fertilizers, pest control, and modern farming technologies.",
 
 
-    "nini maana ya mbolea":
-    "Mbolea ni kitu kinachoongezwa kwenye udongo ili kuongeza virutubisho vinavyosaidia mimea kukua.",
+
+    "agriculture challenges":
+    "Agriculture challenges include climate change, pests and diseases, lack of capital, poor markets, and limited access to technology.",
+
 
 
     "what is climate smart agriculture":
     "Climate smart agriculture is an approach that increases agricultural productivity while adapting to climate change and reducing environmental impacts."
 
 }
+
+
+
+# ==========================================
+# AGRICULTURE RESPONSE
+# ==========================================
+
+def get_agriculture_answer(question):
+
+
+    if question in agriculture_knowledge:
+
+        return agriculture_knowledge[question]
+
+
+    return None
