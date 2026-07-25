@@ -1,35 +1,5 @@
 [
     {
-        "time": "2026-07-25 22:47:00.134292",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
-        "topic": "agriculture"
-    },
-    {
-        "time": "2026-07-25 22:47:14.660825",
-        "user": "what are its challenges",
-        "afrimind": "I don't know the answer yet.",
-        "topic": "challenges"
-    },
-    {
-        "time": "2026-07-25 22:53:06.718931",
-        "user": "what are agriculture challenges",
-        "afrimind": "\nCategory: Agriculture\n\nAnalysis:\nThe problem may involve farming methods, climate, markets, or resources.\n\nRecommended Steps:\n- Identify the farming challenge\n- Improve production methods\n- Use better technology\n- Find reliable markets\n",
-        "topic": "challenges"
-    },
-    {
-        "time": "2026-07-25 22:58:51.644418",
-        "user": "what are agriculture challenges",
-        "afrimind": "\nCategory: Agriculture\n\nAnalysis:\nThe problem may involve farming methods, climate, markets, or resources.\n\nRecommended Steps:\n- Identify the farming challenge\n- Improve production methods\n- Use better technology\n- Find reliable markets\n",
-        "topic": "challenges"
-    },
-    {
-        "time": "2026-07-25 22:59:07.604009",
-        "user": "what are agriculture challenges",
-        "afrimind": "\nCategory: Agriculture\n\nAnalysis:\nThe problem may involve farming methods, climate, markets, or resources.\n\nRecommended Steps:\n- Identify the farming challenge\n- Improve production methods\n- Use better technology\n- Find reliable markets\n",
-        "topic": "challenges"
-    },
-    {
         "time": "2026-07-25 23:02:00.396709",
         "user": "what is agriculture",
         "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
@@ -295,6 +265,36 @@
     },
     {
         "time": "2026-07-26 01:04:07.405004",
+        "user": "what is machine learning",
+        "afrimind": "Machine learning is a branch of artificial intelligence that allows computers to learn from data and improve performance without being explicitly programmed.",
+        "topic": "learning"
+    },
+    {
+        "time": "2026-07-26 01:13:10.803833",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
+        "topic": "agriculture"
+    },
+    {
+        "time": "2026-07-26 01:13:32.803789",
+        "user": "what is machine learning",
+        "afrimind": "Machine learning is a branch of artificial intelligence that allows computers to learn from data and improve performance without being explicitly programmed.",
+        "topic": "learning"
+    },
+    {
+        "time": "2026-07-26 01:14:35.930684",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
+        "topic": "agriculture"
+    },
+    {
+        "time": "2026-07-26 01:19:04.686535",
+        "user": "what is cybersecurity",
+        "afrimind": "Cybersecurity is the practice of protecting computers, networks, applications, and information from cyber attacks.",
+        "topic": "cybersecurity"
+    },
+    {
+        "time": "2026-07-26 01:19:22.310396",
         "user": "what is machine learning",
         "afrimind": "Machine learning is a branch of artificial intelligence that allows computers to learn from data and improve performance without being explicitly programmed.",
         "topic": "learning"
