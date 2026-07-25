@@ -1,7 +1,8 @@
 # ==========================================
 # AfriMind AI Desktop App
-# Version 1.0
+# Version 1.1
 # Desktop Intelligence Interface
+# Conversation Memory Enabled
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -9,6 +10,8 @@
 
 import sys
 import os
+import tkinter as tk
+from tkinter import scrolledtext
 
 
 # ==========================================
@@ -24,15 +27,12 @@ sys.path.append(
 )
 
 
-
 # ==========================================
-# IMPORT AFRIMIND BRAIN
+# IMPORT AFRIMIND SYSTEM
 # ==========================================
-
-import tkinter as tk
-from tkinter import scrolledtext
 
 from core.ai_engine import ask_question
+from core.conversation_engine import save_conversation
 
 
 
@@ -53,7 +53,7 @@ window.geometry(
 
 
 # ==========================================
-# CHAT DISPLAY
+# CHAT AREA
 # ==========================================
 
 chat_box = scrolledtext.ScrolledText(
@@ -68,13 +68,9 @@ chat_box = scrolledtext.ScrolledText(
 
 )
 
-
 chat_box.pack(
-
     padx=10,
-
     pady=10
-
 )
 
 
@@ -91,32 +87,24 @@ user_input = tk.Entry(
 
 )
 
-
 user_input.pack(
-
     padx=10,
-
     pady=5
-
 )
 
 
 
 # ==========================================
-# SEND MESSAGE
+# SEND MESSAGE FUNCTION
 # ==========================================
 
 def send_message():
 
-
     question = user_input.get()
-
 
 
     if question.strip():
 
-
-        # Show user message
 
         chat_box.insert(
 
@@ -131,7 +119,6 @@ def send_message():
         )
 
 
-
         # Ask AfriMind
 
         answer = ask_question(
@@ -141,8 +128,18 @@ def send_message():
         )
 
 
+        # Save conversation
 
-        # Show AI answer
+        save_conversation(
+
+            question,
+
+            answer
+
+        )
+
+
+        # Display answer
 
         chat_box.insert(
 
@@ -155,7 +152,6 @@ def send_message():
             + "\n\n"
 
         )
-
 
 
         # Clear input
@@ -171,7 +167,7 @@ def send_message():
 
 
 # ==========================================
-# SEND BUTTON
+# BUTTON
 # ==========================================
 
 send_button = tk.Button(
@@ -184,11 +180,8 @@ send_button = tk.Button(
 
 )
 
-
 send_button.pack(
-
     pady=5
-
 )
 
 
@@ -208,7 +201,7 @@ chat_box.insert(
 
 
 # ==========================================
-# START APP
+# START APPLICATION
 # ==========================================
 
 window.mainloop()
