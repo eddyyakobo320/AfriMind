@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 17.3
-# Professional Modular Intelligence System
+# Version 17.4
+# Automatic Modular Intelligence System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -37,22 +37,8 @@ from core.decision_engine import (
 )
 
 
-# ==========================================
-# KNOWLEDGE MODULES
-# ==========================================
-
-from modules.business import (
-    get_business_answer
-)
-
-
-from modules.agriculture import (
-    get_agriculture_answer
-)
-
-
-from modules.health import (
-    get_health_answer
+from core.module_manager import (
+    get_module_answer
 )
 
 
@@ -73,7 +59,7 @@ def clean_question(question):
 
 
 # ==========================================
-# RESPONSE MANAGER
+# RESPONSE SYSTEM
 # ==========================================
 
 def respond(question, answer):
@@ -142,42 +128,7 @@ def handle_memory(question):
 
 
 # ==========================================
-# DOMAIN INTELLIGENCE
-# ==========================================
-
-def get_domain_answer(question):
-
-
-    modules = [
-
-        get_business_answer,
-
-        get_agriculture_answer,
-
-        get_health_answer
-
-    ]
-
-
-    for module in modules:
-
-
-        answer = module(
-            question
-        )
-
-
-        if answer:
-
-            return answer
-
-
-    return None
-
-
-
-# ==========================================
-# DECISION CHECK
+# PROBLEM DETECTION
 # ==========================================
 
 def is_problem(question):
@@ -189,7 +140,8 @@ def is_problem(question):
         "failing",
         "failed",
         "challenge",
-        "tatizo"
+        "tatizo",
+        "issue"
 
     ]
 
@@ -202,7 +154,7 @@ def is_problem(question):
 
 
 # ==========================================
-# AFRIMIND MAIN BRAIN
+# AFRIMIND BRAIN
 # ==========================================
 
 def ask_question(question):
@@ -217,7 +169,7 @@ def ask_question(question):
 
 
 
-    # 1. Personality
+    # 1. Personality Intelligence
 
     answer = get_personality_response(
         question
@@ -233,7 +185,7 @@ def ask_question(question):
 
 
 
-    # 2. Memory
+    # 2. Memory Intelligence
 
     answer = handle_memory(
         question
@@ -249,9 +201,9 @@ def ask_question(question):
 
 
 
-    # 3. Expert Modules
+    # 3. Automatic Knowledge Modules
 
-    answer = get_domain_answer(
+    answer = get_module_answer(
         question
     )
 
@@ -277,7 +229,7 @@ def ask_question(question):
 
 
 
-    # 5. Learning System
+    # 5. Learning Memory
 
     answer = get_learned_answer(
         question
@@ -293,7 +245,7 @@ def ask_question(question):
 
 
 
-    # 6. General Knowledge
+    # 6. Main Knowledge
 
     if question in knowledge:
 
@@ -305,7 +257,7 @@ def ask_question(question):
 
 
 
-    # 7. Unknown Question
+    # 7. Unknown
 
     return respond(
         original,
