@@ -1,35 +1,66 @@
 # ==========================================
-# AfriMind Health Module
-# Version 1.0
-# Health Knowledge Base
+# AfriMind Health Intelligence Module
+# Version 17.3
+# Community Health Knowledge
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
 
+
+# ==========================================
+# HEALTH KNOWLEDGE BASE
+# ==========================================
+
 health_knowledge = {
 
-    "nini maana ya afya":
-    "Afya ni hali ya ustawi wa mwili, akili na jamii, si kutokuwepo kwa ugonjwa pekee.",
 
     "what is health":
-    "Health is a state of complete physical, mental and social well-being, not merely the absence of disease.",
+    "Health is a state of physical, mental, and social well-being that enables people to live productive lives.",
 
-    "nini maana ya lishe":
-    "Lishe ni matumizi ya chakula bora kinachoupatia mwili virutubisho vinavyohitajika.",
+
+
+    "importance of health":
+    "Good health improves quality of life, increases productivity, supports learning, and helps communities develop.",
+
+
+
+    "what is disease prevention":
+    "Disease prevention involves actions taken to reduce the risk of diseases through healthy behaviours, vaccination, sanitation, and early awareness.",
+
+
 
     "what is nutrition":
-    "Nutrition is the process of obtaining and using nutrients from food for growth, energy and good health.",
+    "Nutrition is the process of obtaining and using nutrients from food to support growth, energy, and body functions.",
 
-    "nini maana ya afya ya jamii":
-    "Afya ya jamii ni taaluma inayolenga kuboresha afya ya watu kupitia kinga, elimu na huduma za afya.",
 
-    "what is public health":
-    "Public health is the science of protecting and improving the health of communities through education, prevention and health services.",
 
-    "nini maana ya ugonjwa":
-    "Ugonjwa ni hali inayosababisha mwili au akili kutofanya kazi kwa kawaida.",
+    "healthy lifestyle":
+    "A healthy lifestyle includes balanced nutrition, regular physical activity, enough rest, hygiene, and avoiding harmful behaviours.",
 
-    "what is disease":
-    "A disease is a condition that disrupts the normal functioning of the body or mind."
+
+
+    "importance of clean water":
+    "Clean water is important for preventing waterborne diseases and maintaining good health.",
+
+
+
+    "community health":
+    "Community health focuses on improving the health and well-being of people through awareness, prevention, and collective action."
 
 }
+
+
+
+# ==========================================
+# HEALTH RESPONSE
+# ==========================================
+
+def get_health_answer(question):
+
+
+    if question in health_knowledge:
+
+        return health_knowledge[question]
+
+
+    return None

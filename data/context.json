@@ -1,20 +1,5 @@
 [
     {
-        "time": "2026-07-25 12:23:10.959535",
-        "user": "what is python",
-        "afrimind": "Python is a programming language used to build software, artificial intelligence, automation, and many applications."
-    },
-    {
-        "time": "2026-07-25 12:52:48.043665",
-        "user": "what is python",
-        "afrimind": "Python is a programming language used to build software, artificial intelligence, automation, and many applications."
-    },
-    {
-        "time": "2026-07-25 12:53:10.468892",
-        "user": "my name is Edward",
-        "afrimind": "Nice to meet you edward. I will remember your name."
-    },
-    {
         "time": "2026-07-25 13:00:29.661591",
         "user": "my business is failing",
         "afrimind": "\nCategory: Business\n\nAnalysis:\nThe problem may be related to management, customers, marketing, or finance.\n\nRecommended Steps:\n- Analyze your customers\n- Improve marketing strategies\n- Control expenses\n- Create a business plan\n"
@@ -53,5 +38,65 @@
         "time": "2026-07-25 13:15:43.595284",
         "user": "what is python",
         "afrimind": "Python is a programming language used to build software, artificial intelligence, automation, and many applications."
+    },
+    {
+        "time": "2026-07-25 13:25:00.192211",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
+    },
+    {
+        "time": "2026-07-25 13:25:34.114944",
+        "user": "my business is failing",
+        "afrimind": "\nCategory: Business\n\nAnalysis:\nThe problem may be related to management, customers, marketing, or finance.\n\nRecommended Steps:\n- Analyze your customers\n- Improve marketing strategies\n- Control expenses\n- Create a business plan\n"
+    },
+    {
+        "time": "2026-07-25 13:25:57.426971",
+        "user": "what is python",
+        "afrimind": "Python is a programming language used to build software, artificial intelligence, automation, and many applications."
+    },
+    {
+        "time": "2026-07-25 13:36:44.225371",
+        "user": "what is health",
+        "afrimind": "I don't know the answer yet. Please teach me."
+    },
+    {
+        "time": "2026-07-25 13:37:15.403719",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
+    },
+    {
+        "time": "2026-07-25 13:37:40.056490",
+        "user": "what is health",
+        "afrimind": "I don't know the answer yet. Please teach me."
+    },
+    {
+        "time": "2026-07-25 13:37:57.434076",
+        "user": "what is business",
+        "afrimind": "Business is an activity of producing, buying, or selling goods and services to create value and generate income."
+    },
+    {
+        "time": "2026-07-25 13:40:52.103854",
+        "user": "what is health",
+        "afrimind": "I don't know the answer yet. Please teach me."
+    },
+    {
+        "time": "2026-07-25 13:44:39.587404",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
+    },
+    {
+        "time": "2026-07-25 13:45:52.880042",
+        "user": "what is health",
+        "afrimind": "Health is a state of physical, mental, and social well-being that enables people to live productive lives."
+    },
+    {
+        "time": "2026-07-25 13:46:13.115513",
+        "user": "what is health",
+        "afrimind": "Health is a state of physical, mental, and social well-being that enables people to live productive lives."
+    },
+    {
+        "time": "2026-07-25 13:46:36.143485",
+        "user": "what is business",
+        "afrimind": "Business is an activity of producing, buying, or selling goods and services to create value and generate income."
     }
 ]

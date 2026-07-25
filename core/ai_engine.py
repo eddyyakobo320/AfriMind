@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 17.1.1
-# Professional Brain Optimization
+# Version 17.3
+# Professional Modular Intelligence System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -9,20 +9,51 @@
 
 from knowledge import knowledge
 
-from core.memory_engine import remember, recall
+
+from core.memory_engine import (
+    remember,
+    recall
+)
+
 
 from core.learning_engine import (
     get_learned_answer,
     teach_afrimind
 )
 
-from core.personality_engine import get_personality_response
 
-from core.context_engine import save_context
+from core.personality_engine import (
+    get_personality_response
+)
 
-from core.decision_engine import make_decision
 
-from modules.business import get_business_answer
+from core.context_engine import (
+    save_context
+)
+
+
+from core.decision_engine import (
+    make_decision
+)
+
+
+# ==========================================
+# KNOWLEDGE MODULES
+# ==========================================
+
+from modules.business import (
+    get_business_answer
+)
+
+
+from modules.agriculture import (
+    get_agriculture_answer
+)
+
+
+from modules.health import (
+    get_health_answer
+)
 
 
 
@@ -42,7 +73,7 @@ def clean_question(question):
 
 
 # ==========================================
-# RESPONSE
+# RESPONSE MANAGER
 # ==========================================
 
 def respond(question, answer):
@@ -57,31 +88,121 @@ def respond(question, answer):
 
 
 # ==========================================
-# MEMORY NAME
+# MEMORY SYSTEM
 # ==========================================
 
-def save_name(question):
+def handle_memory(question):
+
 
     if question.startswith("my name is"):
 
-        name = question.replace(
-            "my name is",
-            ""
-        ).strip()
+
+        name = (
+            question
+            .replace("my name is", "")
+            .strip()
+        )
+
 
         remember(
             "user_name",
             name
         )
 
-        return f"Nice to meet you {name}. I will remember your name."
+
+        return (
+            f"Nice to meet you {name}. "
+            "I will remember your name."
+        )
+
+
+
+    if question == "what is my name":
+
+
+        name = recall(
+            "user_name"
+        )
+
+
+        if name:
+
+            return (
+                f"Your name is {name}."
+            )
+
+
+        return (
+            "I don't know your name yet."
+        )
+
 
     return None
 
 
 
 # ==========================================
-# AFRIMIND BRAIN
+# DOMAIN INTELLIGENCE
+# ==========================================
+
+def get_domain_answer(question):
+
+
+    modules = [
+
+        get_business_answer,
+
+        get_agriculture_answer,
+
+        get_health_answer
+
+    ]
+
+
+    for module in modules:
+
+
+        answer = module(
+            question
+        )
+
+
+        if answer:
+
+            return answer
+
+
+    return None
+
+
+
+# ==========================================
+# DECISION CHECK
+# ==========================================
+
+def is_problem(question):
+
+
+    keywords = [
+
+        "problem",
+        "failing",
+        "failed",
+        "challenge",
+        "tatizo"
+
+    ]
+
+
+    return any(
+        word in question
+        for word in keywords
+    )
+
+
+
+# ==========================================
+# AFRIMIND MAIN BRAIN
 # ==========================================
 
 def ask_question(question):
@@ -89,18 +210,22 @@ def ask_question(question):
 
     original = question
 
+
     question = clean_question(
         question
     )
 
 
-    # Personality
+
+    # 1. Personality
 
     answer = get_personality_response(
         question
     )
 
+
     if answer:
+
         return respond(
             original,
             answer
@@ -108,34 +233,14 @@ def ask_question(question):
 
 
 
-    # Save user name
+    # 2. Memory
 
-    answer = save_name(
+    answer = handle_memory(
         question
     )
 
+
     if answer:
-        return respond(
-            original,
-            answer
-        )
-
-
-
-    # Recall name
-
-    if question == "what is my name":
-
-        name = recall(
-            "user_name"
-        )
-
-        answer = (
-            f"Your name is {name}."
-            if name
-            else
-            "I don't know your name yet."
-        )
 
         return respond(
             original,
@@ -144,13 +249,15 @@ def ask_question(question):
 
 
 
-    # Business Knowledge
+    # 3. Expert Modules
 
-    answer = get_business_answer(
+    answer = get_domain_answer(
         question
     )
 
+
     if answer:
+
         return respond(
             original,
             answer
@@ -158,15 +265,10 @@ def ask_question(question):
 
 
 
-    # Decision System
+    # 4. Decision Intelligence
 
-    if any(word in question for word in [
-        "problem",
-        "failing",
-        "failed",
-        "challenge",
-        "tatizo"
-    ]):
+    if is_problem(question):
+
 
         return respond(
             original,
@@ -175,13 +277,15 @@ def ask_question(question):
 
 
 
-    # Learned Knowledge
+    # 5. Learning System
 
     answer = get_learned_answer(
         question
     )
 
+
     if answer:
+
         return respond(
             original,
             answer
@@ -189,9 +293,10 @@ def ask_question(question):
 
 
 
-    # Main Knowledge
+    # 6. General Knowledge
 
     if question in knowledge:
+
 
         return respond(
             original,
@@ -199,6 +304,8 @@ def ask_question(question):
         )
 
 
+
+    # 7. Unknown Question
 
     return respond(
         original,
@@ -213,10 +320,12 @@ def ask_question(question):
 
 def teach(question, answer):
 
+
     result = teach_afrimind(
         question,
         answer
     )
+
 
     return respond(
         question,
