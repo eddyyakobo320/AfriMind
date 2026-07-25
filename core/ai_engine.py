@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 20.0
-# Autonomous Modular Intelligence System
+# Version 21.2
+# Autonomous Ranked Intelligence System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -53,6 +53,11 @@ from core.search_engine import (
 )
 
 
+from core.ranking_engine import (
+    rank_answers
+)
+
+
 
 # ==========================================
 # CLEAN INPUT
@@ -85,7 +90,7 @@ def respond(question, answer):
 
 
 # ==========================================
-# MEMORY HANDLER
+# MEMORY SYSTEM
 # ==========================================
 
 def memory_system(question):
@@ -94,10 +99,11 @@ def memory_system(question):
     if question.startswith("my name is"):
 
 
-        name = question.replace(
-            "my name is",
-            ""
-        ).strip()
+        name = (
+            question
+            .replace("my name is", "")
+            .strip()
+        )
 
 
         remember(
@@ -123,7 +129,9 @@ def memory_system(question):
 
         if name:
 
-            return f"Your name is {name}."
+            return (
+                f"Your name is {name}."
+            )
 
 
         return (
@@ -136,7 +144,7 @@ def memory_system(question):
 
 
 # ==========================================
-# DECISION CHECK
+# PROBLEM DETECTOR
 # ==========================================
 
 def check_problem(question):
@@ -148,7 +156,8 @@ def check_problem(question):
         "challenge",
         "failed",
         "failing",
-        "tatizo"
+        "tatizo",
+        "issue"
 
     ]
 
@@ -161,42 +170,73 @@ def check_problem(question):
 
 
 # ==========================================
-# AUTONOMOUS SEARCH BRAIN
+# INTELLIGENT SEARCH SYSTEM
 # ==========================================
 
 def autonomous_search(question):
 
 
-    # Search saved knowledge
+    answers = []
 
-    answer = search_knowledge(
+
+
+    # Local Knowledge
+
+    local_answer = search_knowledge(
         question
     )
 
 
-    if answer:
-
-        return answer
+    if local_answer:
 
 
+        answers.append({
 
-    # Search internet
+            "answer": local_answer,
 
-    answer = get_search_answer(
+            "source": "knowledge"
+
+        })
+
+
+
+    # Internet Intelligence
+
+    web_answer = get_search_answer(
         question
     )
 
 
-    if answer:
+    if web_answer:
+
+
+        answers.append({
+
+            "answer": web_answer,
+
+            "source": "internet"
+
+        })
+
+
+
+    # Ranking Decision
+
+    if answers:
+
+
+        best_answer = rank_answers(
+            answers
+        )
 
 
         add_knowledge(
             question,
-            answer
+            best_answer
         )
 
 
-        return answer
+        return best_answer
 
 
 
@@ -220,7 +260,7 @@ def ask_question(question):
 
 
 
-    # 1. Personality
+    # 1 Personality
 
     answer = get_personality_response(
         question
@@ -236,7 +276,7 @@ def ask_question(question):
 
 
 
-    # 2. Memory
+    # 2 Memory
 
     answer = memory_system(
         question
@@ -252,7 +292,7 @@ def ask_question(question):
 
 
 
-    # 3. Expert Modules
+    # 3 Expert Modules
 
     answer = get_module_answer(
         question
@@ -268,7 +308,7 @@ def ask_question(question):
 
 
 
-    # 4. Problem Solver
+    # 4 Problem Solving
 
     if check_problem(question):
 
@@ -285,7 +325,7 @@ def ask_question(question):
 
 
 
-    # 5. Learned Knowledge
+    # 5 Learned Intelligence
 
     answer = get_learned_answer(
         question
@@ -301,7 +341,7 @@ def ask_question(question):
 
 
 
-    # 6. Knowledge Database
+    # 6 Main Knowledge
 
     if question in knowledge:
 
@@ -313,7 +353,7 @@ def ask_question(question):
 
 
 
-    # 7. Autonomous Internet Intelligence
+    # 7 Ranked Autonomous Search
 
     answer = autonomous_search(
         question
@@ -322,6 +362,7 @@ def ask_question(question):
 
     if answer:
 
+
         return respond(
             original,
             answer
@@ -329,7 +370,7 @@ def ask_question(question):
 
 
 
-    # 8. Unknown
+    # 8 Unknown
 
     return respond(
         original,
@@ -357,4 +398,7 @@ def teach(question, answer):
     )
 
 
-    return result
+    return respond(
+        question,
+        result
+    )
