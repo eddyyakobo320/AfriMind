@@ -1,10 +1,5 @@
 [
     {
-        "time": "2026-07-25 14:31:58.657659",
-        "user": "what is artificial intelligence",
-        "afrimind": "Artificial Intelligence is the ability of machines to learn, reason, and solve problems."
-    },
-    {
         "time": "2026-07-25 14:53:30.843043",
         "user": "what is quantum computing",
         "afrimind": "I don't know the answer yet."
@@ -98,5 +93,10 @@
         "time": "2026-07-25 15:57:15.984378",
         "user": "what is business",
         "afrimind": "Business is an activity of producing, buying, or selling goods and services to create value and generate income."
+    },
+    {
+        "time": "2026-07-25 16:08:14.159026",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
     }
 ]

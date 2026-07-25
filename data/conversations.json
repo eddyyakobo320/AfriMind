@@ -18,5 +18,18 @@
         "time": "2026-07-25 11:49:07.265603",
         "user": "exit()",
         "afrimind": "I am still learning. Please ask me another question."
+    },
+    {
+        "user": "hello AfriMind",
+        "assistant": "Hello Edward"
+    },
+    {
+        "user": "what is agriculture",
+        "assistant": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
+    },
+    {
+        "time": "2026-07-25 16:13:03.005727",
+        "user": "hello AfriMind",
+        "afrimind": "Hello Edward"
     }
 ]

@@ -57,7 +57,9 @@ from core.ranking_engine import (
     rank_answers
 )
 
-
+from core.conversation_engine import (
+    save_conversation
+)
 
 # ==========================================
 # CLEAN INPUT
@@ -84,6 +86,13 @@ def respond(question, answer):
         question,
         answer
     )
+
+
+    save_conversation(
+        question,
+        answer
+    )
+
 
     return answer
 
