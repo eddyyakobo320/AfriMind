@@ -1,25 +1,5 @@
 [
     {
-        "time": "2026-07-25 16:08:14.159026",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 16:23:02.844889",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 16:23:20.829929",
-        "user": "who is the president of Tanzania",
-        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
-    },
-    {
-        "time": "2026-07-25 16:31:22.888538",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
         "time": "2026-07-25 16:40:56.683784",
         "user": "what is agriculture",
         "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
@@ -98,5 +78,25 @@
         "time": "2026-07-25 17:47:28.293331",
         "user": "what is my name",
         "afrimind": "Your name is edward."
+    },
+    {
+        "time": "2026-07-25 18:11:19.462379",
+        "user": "my language is Swahili",
+        "afrimind": "I have saved your language preference as swahili."
+    },
+    {
+        "time": "2026-07-25 18:11:34.941885",
+        "user": "what language do i prefer",
+        "afrimind": "Your preferred language is swahili."
+    },
+    {
+        "time": "2026-07-25 18:12:40.864295",
+        "user": "i like agriculture",
+        "afrimind": "I have saved agriculture as your interest."
+    },
+    {
+        "time": "2026-07-25 18:20:06.641835",
+        "user": "what are my interests",
+        "afrimind": "Your interests are: agriculture"
     }
 ]

@@ -28,5 +28,25 @@
         "time": "2026-07-25 17:47:28.295151",
         "user": "what is my name",
         "afrimind": "Your name is edward."
+    },
+    {
+        "time": "2026-07-25 18:11:19.467363",
+        "user": "my language is Swahili",
+        "afrimind": "I have saved your language preference as swahili."
+    },
+    {
+        "time": "2026-07-25 18:11:34.943808",
+        "user": "what language do i prefer",
+        "afrimind": "Your preferred language is swahili."
+    },
+    {
+        "time": "2026-07-25 18:12:40.873924",
+        "user": "i like agriculture",
+        "afrimind": "I have saved agriculture as your interest."
+    },
+    {
+        "time": "2026-07-25 18:20:06.647144",
+        "user": "what are my interests",
+        "afrimind": "Your interests are: agriculture"
     }
 ]

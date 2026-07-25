@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 25.0
-# User Intelligence & Autonomous Ranked System
+# Version 26.0
+# Personal Intelligence & Autonomous System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -68,6 +68,13 @@ from core.user_profile import (
     get_profile
 )
 
+from core.preference_engine import (
+    save_preference,
+    get_preference,
+    add_interest,
+    get_interests
+)
+
 
 
 # ==========================================
@@ -108,11 +115,13 @@ def respond(question, answer):
 
 
 # ==========================================
-# MEMORY + USER PROFILE SYSTEM
+# MEMORY + PROFILE + PREFERENCE SYSTEM
 # ==========================================
 
 def memory_system(question):
 
+
+    # USER NAME
 
     if question.startswith("my name is"):
 
@@ -171,9 +180,93 @@ def memory_system(question):
 
 
 
+    # LANGUAGE PREFERENCE
+
+    if question.startswith("my language is"):
+
+
+        language = (
+            question
+            .replace("my language is", "")
+            .strip()
+        )
+
+
+        save_preference(
+            "language",
+            language
+        )
+
+
+        return (
+            f"I have saved your language preference as {language}."
+        )
+
+
+
+    if question == "what language do i prefer":
+
+
+        language = get_preference(
+            "language"
+        )
+
+
+        if language:
+
+            return (
+                f"Your preferred language is {language}."
+            )
+
+
+        return (
+            "You have not set your language preference yet."
+        )
+
+
+
+    # INTERESTS
+
+    if question.startswith("i like"):
+
+
+        interest = (
+            question
+            .replace("i like", "")
+            .strip()
+        )
+
+
+        add_interest(
+            interest
+        )
+
+
+        return (
+            f"I have saved {interest} as your interest."
+        )
+
+# GET SAVED INTERESTS
+
+    if question == "what are my interests":
+
+
+        interests = get_interests()
+
+
+        if interests:
+
+            return (
+                "Your interests are: "
+                + ", ".join(interests)
+            )
+
+
+        return (
+            "You have not saved any interests yet."
+        )
+    
     return None
-
-
 
 # ==========================================
 # PROBLEM DETECTOR
@@ -195,14 +288,17 @@ def check_problem(question):
 
 
     return any(
+
         word in question
+
         for word in keywords
+
     )
 
 
 
 # ==========================================
-# AUTONOMOUS SEARCH
+# AUTONOMOUS SEARCH SYSTEM
 # ==========================================
 
 def autonomous_search(question):
@@ -211,12 +307,18 @@ def autonomous_search(question):
     answers = []
 
 
+
+    # LOCAL KNOWLEDGE
+
     local_answer = search_knowledge(
+
         question
+
     )
 
 
     if local_answer:
+
 
         answers.append({
 
@@ -228,12 +330,17 @@ def autonomous_search(question):
 
 
 
+    # WEB INTELLIGENCE
+
     web_answer = get_search_answer(
+
         question
+
     )
 
 
     if web_answer:
+
 
         answers.append({
 
@@ -245,17 +352,24 @@ def autonomous_search(question):
 
 
 
+    # RANK BEST ANSWER
+
     if answers:
 
 
         best_answer = rank_answers(
+
             answers
+
         )
 
 
         add_knowledge(
+
             question,
+
             best_answer
+
         )
 
 
@@ -267,8 +381,10 @@ def autonomous_search(question):
 
 
 
+
+
 # ==========================================
-# AFRIMIND MAIN BRAIN
+# AFRIMIND MAIN INTELLIGENCE BRAIN
 # ==========================================
 
 def ask_question(question):
@@ -278,108 +394,144 @@ def ask_question(question):
 
 
     question = clean_question(
+
         question
+
     )
 
 
 
-    # Personality
+    # 1. PERSONALITY
 
     answer = get_personality_response(
+
         question
+
     )
 
 
     if answer:
 
+
         return respond(
+
             original,
+
             answer
+
         )
 
 
 
-    # Memory + Profile
+    # 2. MEMORY + PROFILE + PREFERENCE
 
     answer = memory_system(
+
         question
+
     )
 
 
     if answer:
 
+
         return respond(
+
             original,
+
             answer
+
         )
 
 
 
-    # Expert Modules
+    # 3. EXPERT MODULES
 
     answer = get_module_answer(
+
         question
+
     )
 
 
     if answer:
 
+
         return respond(
+
             original,
+
             answer
+
         )
 
 
 
-    # Problem Solver
+    # 4. PROBLEM SOLVING
 
     if check_problem(question):
 
 
         answer = make_decision(
+
             question
+
         )
 
 
         return respond(
+
             original,
+
             answer
+
         )
 
 
 
-    # Learned Knowledge
+    # 5. LEARNING ENGINE
 
     answer = get_learned_answer(
+
         question
+
     )
 
 
     if answer:
 
+
         return respond(
+
             original,
+
             answer
+
         )
 
 
 
-    # Main Knowledge
+    # 6. MAIN KNOWLEDGE DATABASE
 
     if question in knowledge:
 
 
         return respond(
+
             original,
+
             knowledge[question]
+
         )
 
 
 
-    # Autonomous Search
+    # 7. AUTONOMOUS SEARCH
 
     answer = autonomous_search(
+
         question
+
     )
 
 
@@ -387,13 +539,16 @@ def ask_question(question):
 
 
         return respond(
+
             original,
+
             answer
+
         )
 
 
 
-    # Unknown
+    # 8. UNKNOWN ANSWER
 
     return respond(
 
@@ -402,6 +557,8 @@ def ask_question(question):
         "I don't know the answer yet."
 
     )
+
+
 
 
 
