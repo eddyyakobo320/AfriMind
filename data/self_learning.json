@@ -3,5 +3,15 @@
         "answer": "Machine learning allows computers to learn from data",
         "learned_date": "2026-07-25 23:29:27.401227",
         "times_used": 2
+    },
+    "what is agriculture": {
+        "answer": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
+        "learned_date": "2026-07-25 23:34:33.324490",
+        "times_used": 1
+    },
+    "what is renewable energy": {
+        "answer": "Renewable energy comes from natural sources like solar, wind and water.",
+        "learned_date": "2026-07-25 23:35:08.144627",
+        "times_used": 1
     }
 }

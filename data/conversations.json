@@ -183,5 +183,20 @@
         "time": "2026-07-25 23:25:08.270726",
         "user": "what is ai",
         "afrimind": "AI is a technology that allows machines to learn"
+    },
+    {
+        "time": "2026-07-25 23:34:18.949593",
+        "user": "what is machine learning",
+        "afrimind": "Machine learning allows computers to learn from data"
+    },
+    {
+        "time": "2026-07-25 23:34:33.328901",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
+    },
+    {
+        "time": "2026-07-25 23:35:19.060363",
+        "user": "what is renewable energy",
+        "afrimind": "Renewable energy comes from natural sources like solar, wind and water."
     }
 ]
