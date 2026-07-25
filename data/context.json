@@ -1,20 +1,5 @@
 [
     {
-        "time": "2026-07-25 15:54:53.744149",
-        "user": "what is quantum computing",
-        "afrimind": "I searched the internet and found this:\n\nA quantum computer is a computer that represents and processes information using quantum states. Quantum computations exploit phenomena such as superposition, interference, and entanglement. Quantum computers have the potential to complete some calculations exponentially faster than classical computers. For example, a large-scale quantum computer could break widely used encryption schemes and aid physicists in performing physical simulations. However, current hardware implementations of quantum computation are largely experimental and suitable for only certain specialized tasks. The basic unit of information in quantum computing, the qubit, serves a similar function as the bit in ordinary or \"classical\" computing. Unlike a classical bit, which can be in one of two states, a qubit can exist in a linear combination of states known as a quantum superposition. The result of measuring a qubit is one of the two states, given by a probabilistic rule."
-    },
-    {
-        "time": "2026-07-25 15:55:06.114778",
-        "user": "what is health",
-        "afrimind": "Health is a state of physical, mental, and social well-being that enables people to live productive lives."
-    },
-    {
-        "time": "2026-07-25 15:56:04.364517",
-        "user": "my name is Edward",
-        "afrimind": "Nice to meet you edward. I will remember your name."
-    },
-    {
         "time": "2026-07-25 15:56:16.321490",
         "user": "what is my name",
         "afrimind": "Your name is edward."
@@ -98,5 +83,20 @@
         "time": "2026-07-25 16:59:08.877492",
         "user": "what is cybersecurity",
         "afrimind": "Cybersecurity is the practice of protecting computers, networks, and information from cyber attacks."
+    },
+    {
+        "time": "2026-07-25 17:13:26.809543",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
+    },
+    {
+        "time": "2026-07-25 17:13:51.527249",
+        "user": "who is the president of Tanzania",
+        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
+    },
+    {
+        "time": "2026-07-25 17:14:07.732079",
+        "user": "who is the president of Tanzania",
+        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
     }
 ]
