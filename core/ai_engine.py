@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 27.2
-# Clean Intelligence + Learning Memory
+# Version 27.3
+# Clean Intelligence + Learning System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -47,6 +47,11 @@ from core.learning_memory import (
 )
 
 
+from core.intelligence_tracker import (
+    record_knowledge
+)
+
+
 from core.knowledge_engine import (
     search_knowledge,
     add_knowledge
@@ -65,7 +70,7 @@ from core.ranking_engine import (
 
 
 # ==========================================
-# CLEAN INPUT
+# CLEAN QUESTION
 # ==========================================
 
 def clean_question(question):
@@ -102,7 +107,7 @@ def respond(question, answer):
 
 
 # ==========================================
-# SEARCH SYSTEM
+# SEARCH BRAIN
 # ==========================================
 
 def search_brain(question):
@@ -111,36 +116,34 @@ def search_brain(question):
     answers = []
 
 
-    local = search_knowledge(
+    local_answer = search_knowledge(
         question
     )
 
 
-    if local:
+    if local_answer:
 
         answers.append({
 
-            "answer": local,
+            "answer": local_answer,
             "source": "local"
 
         })
 
 
-
-    web = get_search_answer(
+    web_answer = get_search_answer(
         question
     )
 
 
-    if web:
+    if web_answer:
 
         answers.append({
 
-            "answer": web,
-            "source": "web"
+            "answer": web_answer,
+            "source": "internet"
 
         })
-
 
 
     if answers:
@@ -154,9 +157,27 @@ def search_brain(question):
 
 
 
-
 # ==========================================
-# MAIN AFRIMIND BRAIN
+# SAVE INTELLIGENCE
+# ==========================================
+
+def save_intelligence(question, answer):
+
+
+    save_learned_answer(
+        question,
+        answer
+    )
+
+
+    record_knowledge(
+        question,
+        answer
+    
+    )
+
+    # ==========================================
+# MAIN AFRIMIND INTELLIGENCE BRAIN
 # ==========================================
 
 def ask_question(question):
@@ -171,7 +192,9 @@ def ask_question(question):
 
 
 
-    # 1. CHECK LEARNING MEMORY
+    # ======================================
+    # 1. LEARNING MEMORY CHECK
+    # ======================================
 
     learned = get_learned_answer(
         question
@@ -187,7 +210,9 @@ def ask_question(question):
 
 
 
-    # 2. CONTEXT
+    # ======================================
+    # 2. CONTEXT UNDERSTANDING
+    # ======================================
 
     context = understand_reference(
         question
@@ -200,7 +225,9 @@ def ask_question(question):
 
 
 
+    # ======================================
     # 3. PERSONALITY
+    # ======================================
 
     answer = get_personality_response(
         question
@@ -209,38 +236,7 @@ def ask_question(question):
 
     if answer:
 
-        return respond(
-            original,
-            answer
-        )
-
-
-
-    # 4. MODULES
-
-    answer = get_module_answer(
-        question
-    )
-
-
-    if answer:
-
-        return respond(
-            original,
-            answer
-        )
-
-
-
-    # 5. KNOWLEDGE BASE
-
-    if question in knowledge:
-
-
-        answer = knowledge[question]
-
-
-        save_learned_answer(
+        save_intelligence(
             question,
             answer
         )
@@ -253,7 +249,56 @@ def ask_question(question):
 
 
 
-    # 6. SEARCH INTERNET
+    # ======================================
+    # 4. EXPERT MODULES
+    # ======================================
+
+    answer = get_module_answer(
+        question
+    )
+
+
+    if answer:
+
+        save_intelligence(
+            question,
+            answer
+        )
+
+
+        return respond(
+            original,
+            answer
+        )
+
+
+
+    # ======================================
+    # 5. KNOWLEDGE DATABASE
+    # ======================================
+
+    if question in knowledge:
+
+
+        answer = knowledge[question]
+
+
+        save_intelligence(
+            question,
+            answer
+        )
+
+
+        return respond(
+            original,
+            answer
+        )
+
+
+
+    # ======================================
+    # 6. INTERNET SEARCH
+    # ======================================
 
     answer = search_brain(
         question
@@ -263,13 +308,13 @@ def ask_question(question):
     if answer:
 
 
-        save_learned_answer(
+        add_knowledge(
             question,
             answer
         )
 
 
-        add_knowledge(
+        save_intelligence(
             question,
             answer
         )
@@ -282,13 +327,17 @@ def ask_question(question):
 
 
 
+    # ======================================
     # 7. PROBLEM SOLVER
+    # ======================================
 
     if any(word in question for word in [
+
         "problem",
         "challenge",
         "issue",
         "tatizo"
+
     ]):
 
 
@@ -297,6 +346,12 @@ def ask_question(question):
         )
 
 
+        save_intelligence(
+            question,
+            answer
+        )
+
+
         return respond(
             original,
             answer
@@ -304,9 +359,16 @@ def ask_question(question):
 
 
 
+    # ======================================
+    # UNKNOWN
+    # ======================================
+
     return respond(
+
         original,
+
         "I don't know the answer yet."
+
     )
 
 
@@ -320,20 +382,29 @@ def teach(question, answer):
 
 
     result = teach_afrimind(
-        question,
-        answer
-    )
 
-
-    save_learned_answer(
         question,
+
         answer
+
     )
 
 
     add_knowledge(
+
         question,
+
         answer
+
+    )
+
+
+    save_intelligence(
+
+        question,
+
+        answer
+
     )
 
 

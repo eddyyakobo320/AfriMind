@@ -58,5 +58,17 @@
         "user": "what is ai",
         "afrimind": "AI is a technology that allows machines to learn",
         "topic": "ai"
+    },
+    {
+        "time": "2026-07-25 23:24:58.897883",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
+        "topic": "agriculture"
+    },
+    {
+        "time": "2026-07-25 23:25:08.268762",
+        "user": "what is ai",
+        "afrimind": "AI is a technology that allows machines to learn",
+        "topic": "ai"
     }
 ]
