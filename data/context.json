@@ -1,102 +1,50 @@
 [
     {
-        "time": "2026-07-25 16:42:16.918783",
+        "time": "2026-07-25 22:47:00.134292",
         "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
+        "topic": "agriculture"
     },
     {
-        "time": "2026-07-25 16:43:04.481191",
-        "user": "git status",
-        "afrimind": "I don't know the answer yet."
+        "time": "2026-07-25 22:47:14.660825",
+        "user": "what are its challenges",
+        "afrimind": "I don't know the answer yet.",
+        "topic": "challenges"
     },
     {
-        "time": "2026-07-25 16:50:52.134646",
-        "user": " what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
+        "time": "2026-07-25 22:53:06.718931",
+        "user": "what are agriculture challenges",
+        "afrimind": "\nCategory: Agriculture\n\nAnalysis:\nThe problem may involve farming methods, climate, markets, or resources.\n\nRecommended Steps:\n- Identify the farming challenge\n- Improve production methods\n- Use better technology\n- Find reliable markets\n",
+        "topic": "challenges"
     },
     {
-        "time": "2026-07-25 16:51:08.007556",
-        "user": "who is the president of Tanzania",
-        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
+        "time": "2026-07-25 22:58:51.644418",
+        "user": "what are agriculture challenges",
+        "afrimind": "\nCategory: Agriculture\n\nAnalysis:\nThe problem may involve farming methods, climate, markets, or resources.\n\nRecommended Steps:\n- Identify the farming challenge\n- Improve production methods\n- Use better technology\n- Find reliable markets\n",
+        "topic": "challenges"
     },
     {
-        "time": "2026-07-25 16:58:34.128602",
-        "user": "what is artificial intelligence",
-        "afrimind": "Artificial Intelligence is the ability of machines to learn, reason, and solve problems."
+        "time": "2026-07-25 22:59:07.604009",
+        "user": "what are agriculture challenges",
+        "afrimind": "\nCategory: Agriculture\n\nAnalysis:\nThe problem may involve farming methods, climate, markets, or resources.\n\nRecommended Steps:\n- Identify the farming challenge\n- Improve production methods\n- Use better technology\n- Find reliable markets\n",
+        "topic": "challenges"
     },
     {
-        "time": "2026-07-25 16:58:43.843126",
-        "user": "what is climate change",
-        "afrimind": "Climate change is the long term change of temperature and weather patterns."
-    },
-    {
-        "time": "2026-07-25 16:58:56.943331",
-        "user": "my name is Edward",
-        "afrimind": "Nice to meet you edward. I will remember your name."
-    },
-    {
-        "time": "2026-07-25 16:59:08.877492",
-        "user": "what is cybersecurity",
-        "afrimind": "Cybersecurity is the practice of protecting computers, networks, and information from cyber attacks."
-    },
-    {
-        "time": "2026-07-25 17:13:26.809543",
+        "time": "2026-07-25 23:02:00.396709",
         "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
+        "topic": "agriculture"
     },
     {
-        "time": "2026-07-25 17:13:51.527249",
-        "user": "who is the president of Tanzania",
-        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
+        "time": "2026-07-25 23:02:22.485816",
+        "user": "what are agriculture challenges",
+        "afrimind": "Agriculture faces challenges such as climate change, drought, pests and diseases, poor access to markets, limited finance, low technology adoption, and soil degradation.",
+        "topic": "challenges"
     },
     {
-        "time": "2026-07-25 17:14:07.732079",
-        "user": "who is the president of Tanzania",
-        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
-    },
-    {
-        "time": "2026-07-25 17:22:37.284475",
-        "user": "hello",
-        "afrimind": "Hello! \ud83d\udc4b\nI am AfriMind AI, an intelligent assistant built to provide knowledge and solutions for Africa."
-    },
-    {
-        "time": "2026-07-25 17:22:58.780880",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
-    },
-    {
-        "time": "2026-07-25 17:47:05.738236",
-        "user": "my name is Edward",
-        "afrimind": "Nice to meet you edward. I have saved your profile."
-    },
-    {
-        "time": "2026-07-25 17:47:28.293331",
-        "user": "what is my name",
-        "afrimind": "Your name is edward."
-    },
-    {
-        "time": "2026-07-25 18:11:19.462379",
-        "user": "my language is Swahili",
-        "afrimind": "I have saved your language preference as swahili."
-    },
-    {
-        "time": "2026-07-25 18:11:34.941885",
-        "user": "what language do i prefer",
-        "afrimind": "Your preferred language is swahili."
-    },
-    {
-        "time": "2026-07-25 18:12:40.864295",
-        "user": "i like agriculture",
-        "afrimind": "I have saved agriculture as your interest."
-    },
-    {
-        "time": "2026-07-25 18:20:06.641835",
-        "user": "what are my interests",
-        "afrimind": "Your interests are: agriculture"
-    },
-    {
-        "time": "2026-07-25 18:32:02.464887",
-        "user": "hello",
-        "afrimind": "Hello edward \ud83d\udc4b\nYour preferred language is swahili.\nYour interests include: agriculture.\n"
+        "time": "2026-07-25 23:03:27.986369",
+        "user": "what are agriculture challenges",
+        "afrimind": "Agriculture faces challenges such as climate change, drought, pests and diseases, poor access to markets, limited finance, low technology adoption, and soil degradation.",
+        "topic": "challenges"
     }
 ]
