@@ -1,57 +1,89 @@
 # ==========================================
 # AfriMind AI
-# Main Version 5.0
+# Version 16.6
+# Main Application Engine
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
 
 
-from database import load_initial_knowledge
-from memory import remember, recall
-from config import APP_NAME, VERSION, CREATOR, SLOGAN, WELCOME_MESSAGE
+from core.ai_engine import ask_question
+from core.conversation_engine import chat
 
 
-# Load AfriMind knowledge
-load_initial_knowledge()
 
+# ==========================================
+# START MESSAGE
+# ==========================================
 
 print("================================")
-print(WELCOME_MESSAGE)
-print(SLOGAN)
-print("Created by", CREATOR)
-print("Version", VERSION)
+print("🤖 AfriMind AI")
+print("Building Intelligence for Africa")
+print("Version 16.6")
+print("Created by Edward Yakobo Mganga")
 print("================================")
 
+print(
+    "AfriMind: Hello! I am ready to help you."
+)
 
-# Check user memory
-
-saved_name = recall("user_name")
-
-
-if saved_name:
-
-    name = saved_name
-
-    print(f"Welcome back {name}!")
+print(
+    "Type 'exit' to close AfriMind."
+)
 
 
-else:
 
-    name = input("What is your name? ").strip()
+# ==========================================
+# MAIN CHAT LOOP
+# ==========================================
 
-    remember(
-        "user_name",
-        name
+while True:
+
+
+    user_input = input(
+        "\nYou: "
     )
 
-    print(f"Hello {name}!")
+
+    user_input = user_input.strip()
 
 
-print(
-    f"I am {APP_NAME}. You can ask me anything."
-)
+
+    # EXIT SYSTEM
+
+    if user_input.lower() == "exit":
+
+        print(
+            "AfriMind: Goodbye. Thank you for using AfriMind AI."
+        )
+
+        break
 
 
-print(
-    "Please open gui.py to start AfriMind interface."
-)
+
+    # ==========================
+    # TRY AI ENGINE FIRST
+    # ==========================
+
+    answer = ask_question(
+        user_input
+    )
+
+
+
+    # ==========================
+    # IF UNKNOWN USE CONVERSATION
+    # ==========================
+
+    if answer == "I don't know the answer yet. Please teach me.":
+
+        answer = chat(
+            user_input
+        )
+
+
+
+    print(
+        "AfriMind:",
+        answer
+    )

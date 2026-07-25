@@ -3,5 +3,20 @@
         "time": "2026-07-25 11:39:20.791467",
         "user": "hello",
         "afrimind": "Hello! I am AfriMind AI. How can I help you today?"
+    },
+    {
+        "time": "2026-07-25 11:46:59.592805",
+        "user": "hello",
+        "afrimind": "Hello! I am AfriMind AI. How can I help you today?"
+    },
+    {
+        "time": "2026-07-25 11:48:29.982106",
+        "user": "exit()",
+        "afrimind": "I am still learning. Please ask me another question."
+    },
+    {
+        "time": "2026-07-25 11:49:07.265603",
+        "user": "exit()",
+        "afrimind": "I am still learning. Please ask me another question."
     }
 ]
