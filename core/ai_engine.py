@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 17.0
-# Advanced Brain Integration
+# Version 17.1.1
+# Professional Brain Optimization
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -9,37 +9,25 @@
 
 from knowledge import knowledge
 
-
-from core.memory_engine import (
-    remember,
-    recall
-)
-
+from core.memory_engine import remember, recall
 
 from core.learning_engine import (
     get_learned_answer,
     teach_afrimind
 )
 
+from core.personality_engine import get_personality_response
 
-from core.personality_engine import (
-    get_personality_response
-)
+from core.context_engine import save_context
 
+from core.decision_engine import make_decision
 
-from core.context_engine import (
-    save_context
-)
-
-
-from core.decision_engine import (
-    make_decision
-)
+from modules.business import get_business_answer
 
 
 
 # ==========================================
-# CLEAN QUESTION
+# CLEAN INPUT
 # ==========================================
 
 def clean_question(question):
@@ -54,10 +42,10 @@ def clean_question(question):
 
 
 # ==========================================
-# RESPONSE HANDLER
+# RESPONSE
 # ==========================================
 
-def send_response(question, answer):
+def respond(question, answer):
 
     save_context(
         question,
@@ -69,33 +57,24 @@ def send_response(question, answer):
 
 
 # ==========================================
-# MEMORY NAME SYSTEM
+# MEMORY NAME
 # ==========================================
 
-def remember_name(question):
-
+def save_name(question):
 
     if question.startswith("my name is"):
 
-
-        name = (
-            question
-            .replace("my name is", "")
-            .strip()
-        )
-
+        name = question.replace(
+            "my name is",
+            ""
+        ).strip()
 
         remember(
             "user_name",
             name
         )
 
-
-        return (
-            f"Nice to meet you {name}. "
-            "I will remember your name."
-        )
-
+        return f"Nice to meet you {name}. I will remember your name."
 
     return None
 
@@ -110,126 +89,118 @@ def ask_question(question):
 
     original = question
 
-
     question = clean_question(
         question
     )
 
 
-
     # Personality
 
-    response = get_personality_response(
+    answer = get_personality_response(
         question
     )
 
-
-    if response:
-
-        return send_response(
+    if answer:
+        return respond(
             original,
-            response
+            answer
         )
 
 
 
-    # Memory learning
+    # Save user name
 
-    response = remember_name(
+    answer = save_name(
         question
     )
 
-
-    if response:
-
-        return send_response(
+    if answer:
+        return respond(
             original,
-            response
+            answer
         )
 
 
 
-    # Recall user name
+    # Recall name
 
     if question == "what is my name":
-
 
         name = recall(
             "user_name"
         )
 
-
-        response = (
+        answer = (
             f"Your name is {name}."
             if name
             else
             "I don't know your name yet."
         )
 
-
-        return send_response(
+        return respond(
             original,
-            response
+            answer
         )
 
 
 
-    # Decision Engine 🧠
+    # Business Knowledge
+
+    answer = get_business_answer(
+        question
+    )
+
+    if answer:
+        return respond(
+            original,
+            answer
+        )
+
+
+
+    # Decision System
 
     if any(word in question for word in [
         "problem",
-        "business",
-        "biashara",
         "failing",
         "failed",
         "challenge",
         "tatizo"
     ]):
 
-
-        response = make_decision(
-            question
-        )
-
-
-        return send_response(
+        return respond(
             original,
-            response
+            make_decision(question)
         )
 
 
 
-    # Learning Engine
+    # Learned Knowledge
 
-    response = get_learned_answer(
+    answer = get_learned_answer(
         question
     )
 
-
-    if response:
-
-        return send_response(
+    if answer:
+        return respond(
             original,
-            response
+            answer
         )
 
 
 
-    # Knowledge Base
+    # Main Knowledge
 
     if question in knowledge:
 
-
-        return send_response(
+        return respond(
             original,
             knowledge[question]
         )
 
 
 
-    # Unknown
-
-    return send_response(
+    return respond(
         original,
         "I don't know the answer yet. Please teach me."
     )
@@ -242,14 +213,12 @@ def ask_question(question):
 
 def teach(question, answer):
 
-
-    response = teach_afrimind(
+    result = teach_afrimind(
         question,
         answer
     )
 
-
-    return send_response(
+    return respond(
         question,
-        response
+        result
     )
