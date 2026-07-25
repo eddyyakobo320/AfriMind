@@ -1,29 +1,5 @@
 [
     {
-        "time": "2026-07-25 23:02:00.396709",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
-        "topic": "agriculture"
-    },
-    {
-        "time": "2026-07-25 23:02:22.485816",
-        "user": "what are agriculture challenges",
-        "afrimind": "Agriculture faces challenges such as climate change, drought, pests and diseases, poor access to markets, limited finance, low technology adoption, and soil degradation.",
-        "topic": "challenges"
-    },
-    {
-        "time": "2026-07-25 23:03:27.986369",
-        "user": "what are agriculture challenges",
-        "afrimind": "Agriculture faces challenges such as climate change, drought, pests and diseases, poor access to markets, limited finance, low technology adoption, and soil degradation.",
-        "topic": "challenges"
-    },
-    {
-        "time": "2026-07-25 23:13:48.631411",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
-        "topic": "agriculture"
-    },
-    {
         "time": "2026-07-25 23:15:57.971930",
         "user": "what is ai",
         "afrimind": "AI is a technology that allows machines to learn",
@@ -298,5 +274,29 @@
         "user": "what is machine learning",
         "afrimind": "Machine learning is a branch of artificial intelligence that allows computers to learn from data and improve performance without being explicitly programmed.",
         "topic": "learning"
+    },
+    {
+        "time": "2026-07-26 01:36:50.817626",
+        "user": "what is afrimind",
+        "afrimind": "AfriMind is an Artificial Intelligence project created to provide knowledge, solutions, and digital assistance for Africa.",
+        "topic": "afrimind"
+    },
+    {
+        "time": "2026-07-26 01:37:00.877626",
+        "user": "what is machine learning",
+        "afrimind": "Machine learning is a branch of artificial intelligence that allows computers to learn from data and improve performance without being explicitly programmed.",
+        "topic": "learning"
+    },
+    {
+        "time": "2026-07-26 01:37:16.735483",
+        "user": "what problems do farmers face",
+        "afrimind": "Farmers face challenges such as climate change, drought, pests and diseases, poor markets, lack of finance, limited technology, high production costs, and soil degradation.",
+        "topic": "face"
+    },
+    {
+        "time": "2026-07-26 01:37:27.805693",
+        "user": "what is cybersecurity",
+        "afrimind": "Cybersecurity is the practice of protecting computers, networks, applications, and information from cyber attacks.",
+        "topic": "cybersecurity"
     }
 ]
