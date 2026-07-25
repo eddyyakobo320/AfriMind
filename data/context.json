@@ -1,20 +1,5 @@
 [
     {
-        "time": "2026-07-25 13:37:40.056490",
-        "user": "what is health",
-        "afrimind": "I don't know the answer yet. Please teach me."
-    },
-    {
-        "time": "2026-07-25 13:37:57.434076",
-        "user": "what is business",
-        "afrimind": "Business is an activity of producing, buying, or selling goods and services to create value and generate income."
-    },
-    {
-        "time": "2026-07-25 13:40:52.103854",
-        "user": "what is health",
-        "afrimind": "I don't know the answer yet. Please teach me."
-    },
-    {
         "time": "2026-07-25 13:44:39.587404",
         "user": "what is agriculture",
         "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
@@ -98,5 +83,20 @@
         "time": "2026-07-25 15:32:02.356246",
         "user": "what is agriculture",
         "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
+    },
+    {
+        "time": "2026-07-25 15:39:21.366762",
+        "user": "what is quantum computing",
+        "afrimind": "I searched the internet and found this:\n\nA quantum computer is a computer that represents and processes information using quantum states. Quantum computations exploit phenomena such as superposition, interference, and entanglement. Quantum computers have the potential to complete some calculations exponentially faster than classical computers. For example, a large-scale quantum computer could break widely used encryption schemes and aid physicists in performing physical simulations. However, current hardware implementations of quantum computation are largely experimental and suitable for only certain specialized tasks. The basic unit of information in quantum computing, the qubit, serves a similar function as the bit in ordinary or \"classical\" computing. Unlike a classical bit, which can be in one of two states, a qubit can exist in a linear combination of states known as a quantum superposition. The result of measuring a qubit is one of the two states, given by a probabilistic rule."
+    },
+    {
+        "time": "2026-07-25 15:39:30.156347",
+        "user": "what is health",
+        "afrimind": "Health is a state of physical, mental, and social well-being that enables people to live productive lives."
+    },
+    {
+        "time": "2026-07-25 15:39:40.345468",
+        "user": "who is the president of Tanzania",
+        "afrimind": "The President of the United Republic of Tanzania is the head of state and head of government of Tanzania. Samia Suluhu Hassan, sworn in on 19 March 2021, is the first female president of the United Republic of Tanzania. She succeeded John Magufuli following his death on 17 March 2021."
     }
 ]
