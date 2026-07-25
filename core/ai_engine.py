@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 16.9.2
-# Professional Brain Refactor
+# Version 17.0
+# Advanced Brain Integration
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -9,28 +9,37 @@
 
 from knowledge import knowledge
 
+
 from core.memory_engine import (
     remember,
     recall
 )
+
 
 from core.learning_engine import (
     get_learned_answer,
     teach_afrimind
 )
 
+
 from core.personality_engine import (
     get_personality_response
 )
+
 
 from core.context_engine import (
     save_context
 )
 
 
+from core.decision_engine import (
+    make_decision
+)
+
+
 
 # ==========================================
-# TEXT PROCESSING
+# CLEAN QUESTION
 # ==========================================
 
 def clean_question(question):
@@ -60,7 +69,7 @@ def send_response(question, answer):
 
 
 # ==========================================
-# MEMORY SYSTEM
+# MEMORY NAME SYSTEM
 # ==========================================
 
 def remember_name(question):
@@ -107,13 +116,16 @@ def ask_question(question):
     )
 
 
+
     # Personality
 
     response = get_personality_response(
         question
     )
 
+
     if response:
+
         return send_response(
             original,
             response
@@ -127,7 +139,9 @@ def ask_question(question):
         question
     )
 
+
     if response:
+
         return send_response(
             original,
             response
@@ -135,7 +149,7 @@ def ask_question(question):
 
 
 
-    # User memory
+    # Recall user name
 
     if question == "what is my name":
 
@@ -160,13 +174,24 @@ def ask_question(question):
 
 
 
-    # Learned knowledge
+    # Decision Engine 🧠
 
-    response = get_learned_answer(
-        question
-    )
+    if any(word in question for word in [
+        "problem",
+        "business",
+        "biashara",
+        "failing",
+        "failed",
+        "challenge",
+        "tatizo"
+    ]):
 
-    if response:
+
+        response = make_decision(
+            question
+        )
+
+
         return send_response(
             original,
             response
@@ -174,9 +199,26 @@ def ask_question(question):
 
 
 
-    # Main knowledge
+    # Learning Engine
+
+    response = get_learned_answer(
+        question
+    )
+
+
+    if response:
+
+        return send_response(
+            original,
+            response
+        )
+
+
+
+    # Knowledge Base
 
     if question in knowledge:
+
 
         return send_response(
             original,
@@ -195,7 +237,7 @@ def ask_question(question):
 
 
 # ==========================================
-# LEARNING FUNCTION
+# TEACH AFRIMIND
 # ==========================================
 
 def teach(question, answer):
