@@ -286,5 +286,17 @@
         "user": "exit()",
         "afrimind": "I am still learning. Please teach me more about this topic.",
         "topic": "exit()"
+    },
+    {
+        "time": "2026-07-26 01:04:00.222814",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
+        "topic": "agriculture"
+    },
+    {
+        "time": "2026-07-26 01:04:07.405004",
+        "user": "what is machine learning",
+        "afrimind": "Machine learning is a branch of artificial intelligence that allows computers to learn from data and improve performance without being explicitly programmed.",
+        "topic": "learning"
     }
 ]

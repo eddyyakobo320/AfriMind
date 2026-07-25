@@ -1,11 +1,10 @@
 # ==========================================
 # AfriMind AI Desktop App
-# Version 24.1
+# Version 28.2
 # Professional Intelligence Interface
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
-
 
 import sys
 import os
@@ -14,30 +13,20 @@ from tkinter import scrolledtext
 from datetime import datetime
 
 
-# ==========================================
-# CONNECT AFRIMIND CORE
-# ==========================================
+# Connect AfriMind Core
 
 sys.path.append(
     os.path.dirname(
-        os.path.dirname(
-            os.path.abspath(__file__)
-        )
+        os.path.abspath(__file__)
     )
 )
 
 
 from core.ai_engine import ask_question
 
-from core.conversation_engine import (
-    save_conversation,
-    get_recent_conversations
-)
-
-
 
 # ==========================================
-# MAIN WINDOW
+# WINDOW
 # ==========================================
 
 window = tk.Tk()
@@ -47,12 +36,7 @@ window.title(
 )
 
 window.geometry(
-    "800x600"
-)
-
-window.resizable(
-    True,
-    True
+    "900x650"
 )
 
 
@@ -66,16 +50,12 @@ header = tk.Label(
     text=
     "🌍 AfriMind AI\n"
     "Building Intelligence for Africa\n"
-    "Version 24.1",
-    font=(
-        "Arial",
-        15,
-        "bold"
-    )
+    "Version 28.2",
+    font=("Arial", 16, "bold")
 )
 
 header.pack(
-    pady=8
+    pady=10
 )
 
 
@@ -86,11 +66,8 @@ header.pack(
 
 status = tk.Label(
     window,
-    text="Status: Online 🟢",
-    font=(
-        "Arial",
-        10
-    )
+    text="Status: Online 🟢 Learning Brain Active",
+    font=("Arial", 11)
 )
 
 status.pack()
@@ -98,158 +75,77 @@ status.pack()
 
 
 # ==========================================
-# CHAT AREA
+# CHAT BOX
 # ==========================================
 
 chat_box = scrolledtext.ScrolledText(
-
     window,
-
     wrap=tk.WORD,
-
-    font=(
-        "Arial",
-        11
-    )
-
+    font=("Arial", 12)
 )
 
 chat_box.pack(
-
     padx=10,
-
     pady=10,
-
     fill=tk.BOTH,
-
     expand=True
-
 )
 
-
-
-# ==========================================
-# LOAD MEMORY
-# ==========================================
 
 chat_box.insert(
-
     tk.END,
-
     "🤖 AfriMind: Hello Edward. I am ready to help Africa.\n\n"
-
 )
-
-
-try:
-
-    history = get_recent_conversations()
-
-
-    for chat in history[-10:]:
-
-
-        if "user" in chat:
-
-            chat_box.insert(
-
-                tk.END,
-
-                "👤 Edward: "
-                + chat["user"]
-                + "\n"
-
-            )
-
-
-        if "assistant" in chat:
-
-            chat_box.insert(
-
-                tk.END,
-
-                "🤖 AfriMind: "
-                + chat["assistant"]
-                + "\n\n"
-
-            )
-
-
-except Exception:
-
-    pass
-
 
 
 
 # ==========================================
-# INPUT AREA
+# INPUT
 # ==========================================
 
-input_frame = tk.Frame(
-    window
-)
+frame = tk.Frame(window)
 
-input_frame.pack(
+frame.pack(
     fill=tk.X,
-    padx=10,
-    pady=5
+    padx=10
 )
 
 
-
-user_input = tk.Entry(
-
-    input_frame,
-
-    font=(
-        "Arial",
-        12
-    )
-
+entry = tk.Entry(
+    frame,
+    font=("Arial",12)
 )
 
-user_input.pack(
-
+entry.pack(
     side=tk.LEFT,
-
     fill=tk.X,
-
     expand=True
-
 )
 
 
 
 # ==========================================
-# SEND FUNCTION
+# SEND
 # ==========================================
 
 def send_message():
 
-
-    question = user_input.get()
+    question = entry.get()
 
 
     if question.strip():
 
 
-        time = datetime.now().strftime(
-            "%H:%M"
-        )
+        time = datetime.now().strftime("%H:%M")
 
 
         chat_box.insert(
-
             tk.END,
-
             f"👤 Edward [{time}]: {question}\n"
-
         )
 
 
         window.update()
-
 
 
         try:
@@ -258,131 +154,55 @@ def send_message():
                 question
             )
 
-
-        except Exception as error:
+        except Exception as e:
 
             answer = (
                 "System error: "
-                + str(error)
+                + str(e)
             )
 
 
 
         chat_box.insert(
-
             tk.END,
-
             f"🤖 AfriMind [{time}]: {answer}\n\n"
-
-        )
-
-
-        save_conversation(
-
-            question,
-
-            answer
-
         )
 
 
         chat_box.see(
-
             tk.END
-
         )
 
 
-        user_input.delete(
-
+        entry.delete(
             0,
-
             tk.END
-
         )
 
 
 
 # ==========================================
-# BUTTON FUNCTIONS
+# BUTTON
 # ==========================================
 
-
-def clear_chat():
-
-    chat_box.delete(
-
-        "1.0",
-
-        tk.END
-
-    )
-
-    chat_box.insert(
-
-        tk.END,
-
-        "🤖 AfriMind: Chat cleared. Ready.\n\n"
-
-    )
-
-
-
-
-send_button = tk.Button(
-
-    input_frame,
-
-    text="Send",
-
-    width=10,
-
-    command=send_message
-
+button = tk.Button(
+    frame,
+    text="Ask AfriMind",
+    command=send_message,
+    width=15
 )
 
 
-send_button.pack(
-
+button.pack(
     side=tk.RIGHT,
-
     padx=5
-
 )
 
 
 
-clear_button = tk.Button(
-
-    input_frame,
-
-    text="Clear",
-
-    width=10,
-
-    command=clear_chat
-
-)
-
-
-clear_button.pack(
-
-    side=tk.RIGHT
-
-)
-
-
-
-# ==========================================
-# ENTER KEY
-# ==========================================
-
-user_input.bind(
-
+entry.bind(
     "<Return>",
-
     lambda event: send_message()
-
 )
 
 
@@ -392,24 +212,17 @@ user_input.bind(
 # ==========================================
 
 footer = tk.Label(
-
     window,
-
     text=
-    "AfriMind AI Version 24.1 | Created by Edward Yakobo Mganga"
-
+    "AfriMind AI v28.2 | Created by Edward Yakobo Mganga"
 )
 
 footer.pack(
-
     pady=5
-
 )
 
 
 
-# ==========================================
-# START APPLICATION
-# ==========================================
+# START
 
 window.mainloop()

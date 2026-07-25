@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AfriMind AI</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+            margin: 0;
+
+        }
+
+
+        .header {
+
+            background: #0b6623;
+            color: white;
+            padding: 20px;
+
+        }
+
+
+        .box {
+
+            background: white;
+            width: 80%;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 15px;
+
+            box-shadow: 0px 0px 10px #ccc;
+
+        }
+
+
+        input {
+
+            width: 70%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+
+        }
+
+
+        button {
+
+            padding: 12px 20px;
+            background: #0b6623;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+        }
+
+
+        button:hover {
+
+            background: #094d1a;
+
+        }
+
+
+        #answer {
+
+            margin-top: 25px;
+            padding: 15px;
+            background: #eeeeee;
+            border-radius: 10px;
+            text-align: left;
+            min-height: 50px;
+
+        }
+
+
+        .footer {
+
+            margin-top: 30px;
+            color: gray;
+
+        }
+
+
+    </style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+<h1>🌍 AfriMind AI</h1>
+
+<p>Building Intelligence for Africa</p>
+
+</div>
+
+
+
+<div class="box">
+
+
+<h2>Ask AfriMind</h2>
+
+
+<input 
+id="question"
+placeholder="Ask your question here..."
+>
+
+
+<button onclick="ask()">
+
+Ask
+
+</button>
+
+
+
+<div id="answer">
+
+AfriMind is ready to help you...
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footer">
+
+<p>
+AfriMind AI © 2026
+<br>
+Created by Edward Yakobo Mganga
+</p>
+
+</div>
+
+
+
+
+<script>
+
+
+function ask(){
+
+
+let q = document.getElementById("question").value;
+
+
+
+if(q.trim() == ""){
+
+document.getElementById("answer").innerHTML =
+"Please enter a question.";
+
+return;
+
+}
+
+
+
+document.getElementById("answer").innerHTML =
+"AfriMind is thinking...";
+
+
+
+fetch("/ask", {
+
+
+method:"POST",
+
+
+headers:{
+
+
+"Content-Type":"application/json"
+
+
+},
+
+
+body:JSON.stringify({
+
+
+question:q
+
+
+})
+
+
+})
+
+
+
+.then(response => response.json())
+
+
+.then(data => {
+
+
+document.getElementById("answer").innerHTML =
+data.answer;
+
+
+})
+
+
+
+.catch(error => {
+
+
+document.getElementById("answer").innerHTML =
+"Connection error. Try again.";
+
+
+});
+
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
