@@ -1,15 +1,5 @@
 [
     {
-        "time": "2026-07-25 15:56:56.998784",
-        "user": "what is climate change",
-        "afrimind": "Climate change is the long term change of temperature and weather patterns."
-    },
-    {
-        "time": "2026-07-25 15:57:15.984378",
-        "user": "what is business",
-        "afrimind": "Business is an activity of producing, buying, or selling goods and services to create value and generate income."
-    },
-    {
         "time": "2026-07-25 16:08:14.159026",
         "user": "what is agriculture",
         "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
@@ -98,5 +88,15 @@
         "time": "2026-07-25 17:22:58.780880",
         "user": "what is agriculture",
         "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products."
+    },
+    {
+        "time": "2026-07-25 17:47:05.738236",
+        "user": "my name is Edward",
+        "afrimind": "Nice to meet you edward. I have saved your profile."
+    },
+    {
+        "time": "2026-07-25 17:47:28.293331",
+        "user": "what is my name",
+        "afrimind": "Your name is edward."
     }
 ]

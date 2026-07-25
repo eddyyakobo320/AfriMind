@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 21.2
-# Autonomous Ranked Intelligence System
+# Version 25.0
+# User Intelligence & Autonomous Ranked System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -57,9 +57,18 @@ from core.ranking_engine import (
     rank_answers
 )
 
+
 from core.conversation_engine import (
     save_conversation
 )
+
+
+from core.user_profile import (
+    save_profile,
+    get_profile
+)
+
+
 
 # ==========================================
 # CLEAN INPUT
@@ -99,7 +108,7 @@ def respond(question, answer):
 
 
 # ==========================================
-# MEMORY SYSTEM
+# MEMORY + USER PROFILE SYSTEM
 # ==========================================
 
 def memory_system(question):
@@ -121,9 +130,15 @@ def memory_system(question):
         )
 
 
+        save_profile(
+            "name",
+            name
+        )
+
+
         return (
             f"Nice to meet you {name}. "
-            "I will remember your name."
+            "I have saved your profile."
         )
 
 
@@ -136,6 +151,13 @@ def memory_system(question):
         )
 
 
+        if not name:
+
+            name = get_profile(
+                "name"
+            )
+
+
         if name:
 
             return (
@@ -146,6 +168,7 @@ def memory_system(question):
         return (
             "I don't know your name yet."
         )
+
 
 
     return None
@@ -179,7 +202,7 @@ def check_problem(question):
 
 
 # ==========================================
-# INTELLIGENT SEARCH SYSTEM
+# AUTONOMOUS SEARCH
 # ==========================================
 
 def autonomous_search(question):
@@ -188,16 +211,12 @@ def autonomous_search(question):
     answers = []
 
 
-
-    # Local Knowledge
-
     local_answer = search_knowledge(
         question
     )
 
 
     if local_answer:
-
 
         answers.append({
 
@@ -209,15 +228,12 @@ def autonomous_search(question):
 
 
 
-    # Internet Intelligence
-
     web_answer = get_search_answer(
         question
     )
 
 
     if web_answer:
-
 
         answers.append({
 
@@ -228,8 +244,6 @@ def autonomous_search(question):
         })
 
 
-
-    # Ranking Decision
 
     if answers:
 
@@ -269,7 +283,7 @@ def ask_question(question):
 
 
 
-    # 1 Personality
+    # Personality
 
     answer = get_personality_response(
         question
@@ -285,7 +299,7 @@ def ask_question(question):
 
 
 
-    # 2 Memory
+    # Memory + Profile
 
     answer = memory_system(
         question
@@ -301,7 +315,7 @@ def ask_question(question):
 
 
 
-    # 3 Expert Modules
+    # Expert Modules
 
     answer = get_module_answer(
         question
@@ -317,7 +331,7 @@ def ask_question(question):
 
 
 
-    # 4 Problem Solving
+    # Problem Solver
 
     if check_problem(question):
 
@@ -334,7 +348,7 @@ def ask_question(question):
 
 
 
-    # 5 Learned Intelligence
+    # Learned Knowledge
 
     answer = get_learned_answer(
         question
@@ -350,7 +364,7 @@ def ask_question(question):
 
 
 
-    # 6 Main Knowledge
+    # Main Knowledge
 
     if question in knowledge:
 
@@ -362,7 +376,7 @@ def ask_question(question):
 
 
 
-    # 7 Ranked Autonomous Search
+    # Autonomous Search
 
     answer = autonomous_search(
         question
@@ -379,11 +393,14 @@ def ask_question(question):
 
 
 
-    # 8 Unknown
+    # Unknown
 
     return respond(
+
         original,
+
         "I don't know the answer yet."
+
     )
 
 
@@ -396,18 +413,27 @@ def teach(question, answer):
 
 
     result = teach_afrimind(
+
         question,
+
         answer
+
     )
 
 
     add_knowledge(
+
         question,
+
         answer
+
     )
 
 
     return respond(
+
         question,
+
         result
+
     )
