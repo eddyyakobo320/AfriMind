@@ -184,5 +184,107 @@
         "user": "what is farming",
         "afrimind": "Farming is the activity of growing crops and keeping animals for food, income, and other resources.",
         "topic": "farming"
+    },
+    {
+        "time": "2026-07-26 00:26:46.399417",
+        "user": "what is afrimind",
+        "afrimind": "AfriMind is an Artificial Intelligence project created to provide knowledge, solutions, and digital assistance for Africa.",
+        "topic": "afrimind"
+    },
+    {
+        "time": "2026-07-26 00:26:55.920723",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
+        "topic": "agriculture"
+    },
+    {
+        "time": "2026-07-26 00:27:04.708999",
+        "user": "what is cybersecurity",
+        "afrimind": "Cybersecurity is the practice of protecting computers, networks, applications, and information from cyber attacks.",
+        "topic": "cybersecurity"
+    },
+    {
+        "time": "2026-07-26 00:27:43.968852",
+        "user": "what is afrimind",
+        "afrimind": "AfriMind is an Artificial Intelligence project created to provide knowledge, solutions, and digital assistance for Africa.",
+        "topic": "afrimind"
+    },
+    {
+        "time": "2026-07-26 00:27:59.375975",
+        "user": "what is machine learning",
+        "afrimind": "Machine learning is a branch of artificial intelligence that allows computers to learn from data and improve performance without being explicitly programmed.",
+        "topic": "learning"
+    },
+    {
+        "time": "2026-07-26 00:27:59.398062",
+        "user": "what is farming",
+        "afrimind": "Farming is the activity of growing crops and keeping animals for food, income, and other resources.",
+        "topic": "farming"
+    },
+    {
+        "time": "2026-07-26 00:27:59.408079",
+        "user": "what is entrepreneurship",
+        "afrimind": "Entrepreneurship is the process of creating, developing, and managing a business opportunity.",
+        "topic": "entrepreneurship"
+    },
+    {
+        "time": "2026-07-26 00:28:05.061201",
+        "user": "who created you",
+        "afrimind": "I was created by Edward Yakobo Mganga, the founder of AfriMind AI.",
+        "topic": "you"
+    },
+    {
+        "time": "2026-07-26 00:28:09.657811",
+        "user": "",
+        "afrimind": "I am still learning. Please teach me more about this topic.",
+        "topic": null
+    },
+    {
+        "time": "2026-07-26 00:28:11.019461",
+        "user": "",
+        "afrimind": "I am still learning. Please teach me more about this topic.",
+        "topic": null
+    },
+    {
+        "time": "2026-07-26 00:28:12.713753",
+        "user": "",
+        "afrimind": "I am still learning. Please teach me more about this topic.",
+        "topic": null
+    },
+    {
+        "time": "2026-07-26 00:28:55.802156",
+        "user": "what is farming",
+        "afrimind": "Farming is the activity of growing crops and keeping animals for food, income, and other resources.",
+        "topic": "farming"
+    },
+    {
+        "time": "2026-07-26 00:29:03.448432",
+        "user": "what is entrepreneurship",
+        "afrimind": "Entrepreneurship is the process of creating, developing, and managing a business opportunity.",
+        "topic": "entrepreneurship"
+    },
+    {
+        "time": "2026-07-26 00:29:13.409557",
+        "user": "what is machine learning",
+        "afrimind": "Machine learning is a branch of artificial intelligence that allows computers to learn from data and improve performance without being explicitly programmed.",
+        "topic": "learning"
+    },
+    {
+        "time": "2026-07-26 00:29:42.097019",
+        "user": "git status",
+        "afrimind": "I am still learning. Please teach me more about this topic.",
+        "topic": "status"
+    },
+    {
+        "time": "2026-07-26 00:30:02.822496",
+        "user": "git add .",
+        "afrimind": "I am still learning. Please teach me more about this topic.",
+        "topic": "."
+    },
+    {
+        "time": "2026-07-26 00:30:16.009170",
+        "user": "exit()",
+        "afrimind": "I am still learning. Please teach me more about this topic.",
+        "topic": "exit()"
     }
 ]
