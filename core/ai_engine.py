@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 27.0
-# Clean Intelligence Controller
+# Version 27.2
+# Clean Intelligence + Learning Memory
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -37,8 +37,13 @@ from core.decision_engine import (
 
 
 from core.learning_engine import (
-    get_learned_answer,
     teach_afrimind
+)
+
+
+from core.learning_memory import (
+    save_learned_answer,
+    get_learned_answer
 )
 
 
@@ -60,7 +65,7 @@ from core.ranking_engine import (
 
 
 # ==========================================
-# CLEAN QUESTION
+# CLEAN INPUT
 # ==========================================
 
 def clean_question(question):
@@ -75,7 +80,7 @@ def clean_question(question):
 
 
 # ==========================================
-# RESPONSE
+# RESPONSE HANDLER
 # ==========================================
 
 def respond(question, answer):
@@ -85,17 +90,19 @@ def respond(question, answer):
         answer
     )
 
+
     save_conversation(
         question,
         answer
     )
+
 
     return answer
 
 
 
 # ==========================================
-# SEARCH INTELLIGENCE
+# SEARCH SYSTEM
 # ==========================================
 
 def search_brain(question):
@@ -112,8 +119,10 @@ def search_brain(question):
     if local:
 
         answers.append({
+
             "answer": local,
             "source": "local"
+
         })
 
 
@@ -126,8 +135,10 @@ def search_brain(question):
     if web:
 
         answers.append({
+
             "answer": web,
             "source": "web"
+
         })
 
 
@@ -143,8 +154,9 @@ def search_brain(question):
 
 
 
+
 # ==========================================
-# MAIN BRAIN
+# MAIN AFRIMIND BRAIN
 # ==========================================
 
 def ask_question(question):
@@ -158,7 +170,24 @@ def ask_question(question):
     )
 
 
-    # Context
+
+    # 1. CHECK LEARNING MEMORY
+
+    learned = get_learned_answer(
+        question
+    )
+
+
+    if learned:
+
+        return respond(
+            original,
+            learned
+        )
+
+
+
+    # 2. CONTEXT
 
     context = understand_reference(
         question
@@ -167,11 +196,11 @@ def ask_question(question):
 
     if context:
 
-        question = context
+        question = context + " " + question
 
 
 
-    # Personality
+    # 3. PERSONALITY
 
     answer = get_personality_response(
         question
@@ -187,7 +216,7 @@ def ask_question(question):
 
 
 
-    # Modules
+    # 4. MODULES
 
     answer = get_module_answer(
         question
@@ -203,18 +232,28 @@ def ask_question(question):
 
 
 
-    # Knowledge
+    # 5. KNOWLEDGE BASE
 
     if question in knowledge:
 
+
+        answer = knowledge[question]
+
+
+        save_learned_answer(
+            question,
+            answer
+        )
+
+
         return respond(
             original,
-            knowledge[question]
+            answer
         )
 
 
 
-    # Search
+    # 6. SEARCH INTERNET
 
     answer = search_brain(
         question
@@ -222,6 +261,13 @@ def ask_question(question):
 
 
     if answer:
+
+
+        save_learned_answer(
+            question,
+            answer
+        )
+
 
         add_knowledge(
             question,
@@ -236,28 +282,50 @@ def ask_question(question):
 
 
 
-    # Decision
+    # 7. PROBLEM SOLVER
 
-    answer = make_decision(
-        question
-    )
+    if any(word in question for word in [
+        "problem",
+        "challenge",
+        "issue",
+        "tatizo"
+    ]):
+
+
+        answer = make_decision(
+            question
+        )
+
+
+        return respond(
+            original,
+            answer
+        )
+
 
 
     return respond(
         original,
-        answer
+        "I don't know the answer yet."
     )
 
 
 
+
 # ==========================================
-# TEACH
+# TEACH AFRIMIND
 # ==========================================
 
 def teach(question, answer):
 
 
     result = teach_afrimind(
+        question,
+        answer
+    )
+
+
+    save_learned_answer(
         question,
         answer
     )

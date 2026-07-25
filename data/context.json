@@ -46,5 +46,17 @@
         "user": "what are agriculture challenges",
         "afrimind": "Agriculture faces challenges such as climate change, drought, pests and diseases, poor access to markets, limited finance, low technology adoption, and soil degradation.",
         "topic": "challenges"
+    },
+    {
+        "time": "2026-07-25 23:13:48.631411",
+        "user": "what is agriculture",
+        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
+        "topic": "agriculture"
+    },
+    {
+        "time": "2026-07-25 23:15:57.971930",
+        "user": "what is ai",
+        "afrimind": "AI is a technology that allows machines to learn",
+        "topic": "ai"
     }
 ]
