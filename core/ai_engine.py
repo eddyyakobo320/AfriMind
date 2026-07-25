@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 26.0
-# Personal Intelligence & Autonomous System
+# Version 26.1
+# Personal Awareness Intelligence System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -9,59 +9,48 @@
 
 from knowledge import knowledge
 
-
 from core.memory_engine import (
     remember,
     recall
 )
 
-
 from core.personality_engine import (
     get_personality_response
 )
-
 
 from core.context_engine import (
     save_context
 )
 
-
 from core.decision_engine import (
     make_decision
 )
 
-
 from core.module_manager import (
     get_module_answer
 )
-
 
 from core.learning_engine import (
     get_learned_answer,
     teach_afrimind
 )
 
-
 from core.knowledge_engine import (
     search_knowledge,
     add_knowledge
 )
 
-
 from core.search_engine import (
     get_search_answer
 )
-
 
 from core.ranking_engine import (
     rank_answers
 )
 
-
 from core.conversation_engine import (
     save_conversation
 )
-
 
 from core.user_profile import (
     save_profile,
@@ -73,6 +62,10 @@ from core.preference_engine import (
     get_preference,
     add_interest,
     get_interests
+)
+
+from core.personal_awareness import (
+    get_user_awareness
 )
 
 
@@ -103,35 +96,31 @@ def respond(question, answer):
         answer
     )
 
-
     save_conversation(
         question,
         answer
     )
-
 
     return answer
 
 
 
 # ==========================================
-# MEMORY + PROFILE + PREFERENCE SYSTEM
+# MEMORY SYSTEM
 # ==========================================
 
 def memory_system(question):
 
 
-    # USER NAME
+    # NAME
 
     if question.startswith("my name is"):
-
 
         name = (
             question
             .replace("my name is", "")
             .strip()
         )
-
 
         remember(
             "user_name",
@@ -153,7 +142,6 @@ def memory_system(question):
 
 
     if question == "what is my name":
-
 
         name = recall(
             "user_name"
@@ -180,7 +168,7 @@ def memory_system(question):
 
 
 
-    # LANGUAGE PREFERENCE
+    # LANGUAGE
 
     if question.startswith("my language is"):
 
@@ -225,7 +213,7 @@ def memory_system(question):
 
 
 
-    # INTERESTS
+    # INTEREST
 
     if question.startswith("i like"):
 
@@ -246,7 +234,7 @@ def memory_system(question):
             f"I have saved {interest} as your interest."
         )
 
-# GET SAVED INTERESTS
+
 
     if question == "what are my interests":
 
@@ -265,15 +253,19 @@ def memory_system(question):
         return (
             "You have not saved any interests yet."
         )
-    
+
+
+
     return None
+
+
+
 
 # ==========================================
 # PROBLEM DETECTOR
 # ==========================================
 
 def check_problem(question):
-
 
     keywords = [
 
@@ -288,93 +280,68 @@ def check_problem(question):
 
 
     return any(
-
         word in question
-
         for word in keywords
-
     )
 
 
 
+
 # ==========================================
-# AUTONOMOUS SEARCH SYSTEM
+# AUTONOMOUS SEARCH
 # ==========================================
 
 def autonomous_search(question):
 
-
     answers = []
 
 
-
-    # LOCAL KNOWLEDGE
-
     local_answer = search_knowledge(
-
         question
-
     )
 
 
     if local_answer:
 
-
         answers.append({
 
             "answer": local_answer,
-
             "source": "knowledge"
 
         })
 
 
 
-    # WEB INTELLIGENCE
-
     web_answer = get_search_answer(
-
         question
-
     )
 
 
     if web_answer:
 
-
         answers.append({
 
             "answer": web_answer,
-
             "source": "internet"
 
         })
 
 
 
-    # RANK BEST ANSWER
-
     if answers:
 
-
         best_answer = rank_answers(
-
             answers
-
         )
 
 
         add_knowledge(
-
             question,
-
             best_answer
-
         )
 
 
         return best_answer
-
 
 
     return None
@@ -382,9 +349,8 @@ def autonomous_search(question):
 
 
 
-
 # ==========================================
-# AFRIMIND MAIN INTELLIGENCE BRAIN
+# MAIN AFRIMIND BRAIN
 # ==========================================
 
 def ask_question(question):
@@ -394,170 +360,140 @@ def ask_question(question):
 
 
     question = clean_question(
-
         question
-
     )
 
 
+    # PERSONAL AWARENESS
 
-    # 1. PERSONALITY
+    if question in [
+        "hello",
+        "hi",
+        "hey"
+    ]:
+
+
+        answer = get_user_awareness()
+
+
+        return respond(
+            original,
+            answer
+        )
+
+
+
+    # PERSONALITY
 
     answer = get_personality_response(
-
         question
-
     )
 
 
     if answer:
 
-
         return respond(
-
             original,
-
             answer
-
         )
 
 
 
-    # 2. MEMORY + PROFILE + PREFERENCE
+    # MEMORY
 
     answer = memory_system(
-
         question
-
     )
 
 
     if answer:
 
-
         return respond(
-
             original,
-
             answer
-
         )
 
 
 
-    # 3. EXPERT MODULES
+    # MODULES
 
     answer = get_module_answer(
-
         question
-
     )
 
 
     if answer:
 
-
         return respond(
-
             original,
-
             answer
-
         )
 
 
 
-    # 4. PROBLEM SOLVING
+    # PROBLEM SOLVER
 
     if check_problem(question):
 
-
         answer = make_decision(
-
             question
-
         )
 
 
         return respond(
-
             original,
-
             answer
-
         )
 
 
 
-    # 5. LEARNING ENGINE
+    # LEARNING
 
     answer = get_learned_answer(
-
         question
-
     )
 
 
     if answer:
 
-
         return respond(
-
             original,
-
             answer
-
         )
 
 
 
-    # 6. MAIN KNOWLEDGE DATABASE
+    # KNOWLEDGE
 
     if question in knowledge:
 
-
         return respond(
-
             original,
-
             knowledge[question]
-
         )
 
 
 
-    # 7. AUTONOMOUS SEARCH
+    # SEARCH
 
     answer = autonomous_search(
-
         question
-
     )
 
 
     if answer:
 
-
         return respond(
-
             original,
-
             answer
-
         )
 
 
 
-    # 8. UNKNOWN ANSWER
-
     return respond(
-
         original,
-
         "I don't know the answer yet."
-
     )
-
 
 
 
@@ -568,29 +504,19 @@ def ask_question(question):
 
 def teach(question, answer):
 
-
     result = teach_afrimind(
-
         question,
-
         answer
-
     )
 
 
     add_knowledge(
-
         question,
-
         answer
-
     )
 
 
     return respond(
-
         question,
-
         result
-
     )
