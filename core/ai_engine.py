@@ -1,7 +1,7 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 16.4
-# Memory Integration System
+# Version 16.7
+# Learning Integration System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
@@ -12,6 +12,11 @@ from knowledge import knowledge
 from core.memory_engine import (
     remember,
     recall
+)
+
+from core.learning_engine import (
+    teach_afrimind,
+    get_learned_answer
 )
 
 
@@ -39,10 +44,6 @@ def clean_question(question):
 def check_memory_learning(question):
 
 
-    # Example:
-    # my name is Edward
-
-
     if question.startswith("my name is"):
 
 
@@ -50,11 +51,6 @@ def check_memory_learning(question):
             "my name is",
             ""
         ).strip()
-
-
-        # Make first letter capital
-
-        name = name.capitalize()
 
 
         remember(
@@ -87,7 +83,7 @@ def ask_question(question):
 
 
     # ==========================
-    # CHECK NEW MEMORY
+    # CHECK MEMORY LEARNING
     # ==========================
 
     memory_learning = check_memory_learning(
@@ -102,7 +98,7 @@ def ask_question(question):
 
 
     # ==========================
-    # RECALL MEMORY
+    # RECALL NAME
     # ==========================
 
     if question == "what is my name":
@@ -120,18 +116,27 @@ def ask_question(question):
             )
 
 
-        return (
-            "I don't know your name yet."
-        )
+
+    # ==========================
+    # LEARNED KNOWLEDGE SEARCH
+    # ==========================
+
+    learned_answer = get_learned_answer(
+        question
+    )
+
+
+    if learned_answer:
+
+        return learned_answer
 
 
 
     # ==========================
-    # KNOWLEDGE SEARCH
+    # MAIN KNOWLEDGE SEARCH
     # ==========================
 
     if question in knowledge:
-
 
         return knowledge[question]
 
@@ -144,4 +149,22 @@ def ask_question(question):
     return (
         "I don't know the answer yet. "
         "Please teach me."
+    )
+
+
+
+# ==========================================
+# TEACH FUNCTION
+# ==========================================
+
+def teach(question, answer):
+
+    question = clean_question(
+        question
+    )
+
+
+    return teach_afrimind(
+        question,
+        answer
     )
