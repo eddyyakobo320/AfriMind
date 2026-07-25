@@ -100,5 +100,29 @@
         "user": "what is agriculture",
         "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
         "topic": "agriculture"
+    },
+    {
+        "time": "2026-07-25 23:57:35.579899",
+        "user": "what is machine learning",
+        "afrimind": "\nCategory: General\n\nAnalysis:\nThe problem requires further analysis before providing a solution.\n\nRecommended Steps:\n- Understand the problem\n- Identify possible causes\n- Develop solutions\n- Take action and evaluate results\n",
+        "topic": "learning"
+    },
+    {
+        "time": "2026-07-25 23:57:54.461740",
+        "user": "what is machine learning",
+        "afrimind": "\nCategory: General\n\nAnalysis:\nThe problem requires further analysis before providing a solution.\n\nRecommended Steps:\n- Understand the problem\n- Identify possible causes\n- Develop solutions\n- Take action and evaluate results\n",
+        "topic": "learning"
+    },
+    {
+        "time": "2026-07-25 23:58:03.485645",
+        "user": "what is farming",
+        "afrimind": "Farming is the activity of growing crops and keeping animals for food, income, and other resources.",
+        "topic": "farming"
+    },
+    {
+        "time": "2026-07-26 00:01:37.852073",
+        "user": "what is machine learning",
+        "afrimind": "Machine learning is a branch of artificial intelligence that allows computers to learn from data and improve performance without being explicitly programmed.",
+        "topic": "learning"
     }
 ]

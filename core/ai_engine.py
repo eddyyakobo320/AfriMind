@@ -1,10 +1,13 @@
 # ==========================================
 # AfriMind AI Core Engine
-# Version 27.5
-# Knowledge Manager Integrated Brain
+# Version 27.7
+# Learning Brain Integration System
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
+
+
+from knowledge import knowledge
 
 
 from core.context_engine import (
@@ -33,30 +36,19 @@ from core.decision_engine import (
 )
 
 
+from core.learning_brain import (
+    learning_process
+)
+
+
 from core.knowledge_manager import (
-    find_answer,
     add_new_knowledge
-)
-
-
-from core.search_engine import (
-    get_search_answer
-)
-
-
-from core.ranking_engine import (
-    rank_answers
-)
-
-
-from core.intelligence_tracker import (
-    record_knowledge
 )
 
 
 
 # ==========================================
-# CLEAN INPUT
+# CLEAN QUESTION
 # ==========================================
 
 def clean_question(question):
@@ -93,43 +85,6 @@ def respond(question, answer):
 
 
 # ==========================================
-# SEARCH SYSTEM
-# ==========================================
-
-def search_brain(question):
-
-
-    answers = []
-
-
-    web_answer = get_search_answer(
-        question
-    )
-
-
-    if web_answer:
-
-        answers.append({
-
-            "answer": web_answer,
-            "source": "internet"
-
-        })
-
-
-
-    if answers:
-
-        return rank_answers(
-            answers
-        )
-
-
-    return None
-
-
-
-# ==========================================
 # MAIN AFRIMIND BRAIN
 # ==========================================
 
@@ -144,7 +99,8 @@ def ask_question(question):
     )
 
 
-    # 1. CONTEXT UNDERSTANDING
+
+    # 1. CONTEXT MEMORY
 
     context = understand_reference(
         question
@@ -157,35 +113,7 @@ def ask_question(question):
 
 
 
-    # 2. KNOWLEDGE MANAGER
-
-    answer = find_answer(
-        question
-    )
-
-
-    if answer:
-
-
-        if isinstance(answer, dict):
-
-            answer = answer["answer"]
-
-
-        record_knowledge(
-            question,
-            answer
-        )
-
-
-        return respond(
-            original,
-            answer
-        )
-
-
-
-    # 3. PERSONALITY
+    # 2. PERSONALITY
 
     answer = get_personality_response(
         question
@@ -194,12 +122,6 @@ def ask_question(question):
 
     if answer:
 
-        add_new_knowledge(
-            question,
-            answer
-        )
-
-
         return respond(
             original,
             answer
@@ -207,7 +129,7 @@ def ask_question(question):
 
 
 
-    # 4. MODULES
+    # 3. MODULE KNOWLEDGE
 
     answer = get_module_answer(
         question
@@ -216,18 +138,6 @@ def ask_question(question):
 
     if answer:
 
-        add_new_knowledge(
-            question,
-            answer
-        )
-
-
-        record_knowledge(
-            question,
-            answer
-        )
-
-
         return respond(
             original,
             answer
@@ -235,9 +145,20 @@ def ask_question(question):
 
 
 
-    # 5. INTERNET SEARCH
+    # 4. OLD KNOWLEDGE BASE
 
-    answer = search_brain(
+    if question in knowledge:
+
+        return respond(
+            original,
+            knowledge[question]
+        )
+
+
+
+    # 5. LEARNING BRAIN
+
+    answer = learning_process(
         question
     )
 
@@ -251,12 +172,6 @@ def ask_question(question):
         )
 
 
-        record_knowledge(
-            question,
-            answer
-        )
-
-
         return respond(
             original,
             answer
@@ -264,7 +179,7 @@ def ask_question(question):
 
 
 
-    # 6. DECISION ENGINE
+    # 6. DECISION SYSTEM
 
     answer = make_decision(
         question
@@ -291,13 +206,6 @@ def teach(question, answer):
     )
 
 
-    record_knowledge(
-        question,
-        answer
-    )
-
-
-    return respond(
-        question,
-        "I have learned this new information."
+    return (
+        "Thank you. I have learned new knowledge."
     )
