@@ -1,15 +1,14 @@
 # ==========================================
 # AfriMind AI Web Server
-# Version 28.2
+# Version 28.3
 # Building Intelligence for Africa
 # Created by Edward Yakobo Mganga
 # ==========================================
 
-
 from flask import Flask, request, jsonify
-
 from core.ai_engine import ask_question
 
+import os
 
 
 # ==========================================
@@ -19,8 +18,6 @@ from core.ai_engine import ask_question
 app = Flask(__name__)
 
 
-
-
 # ==========================================
 # HOME PAGE
 # ==========================================
@@ -28,11 +25,15 @@ app = Flask(__name__)
 @app.route("/")
 def home():
 
+    file_path = os.path.join(
+        "Frontend",
+        "index.html"
+    )
+
     return open(
-        "frontend/index.html",
+        file_path,
         encoding="utf-8"
     ).read()
-
 
 
 
@@ -50,18 +51,15 @@ def ask():
         ""
     )
 
-
     answer = ask_question(
         question
     )
-
 
     return jsonify({
 
         "answer": answer
 
     })
-
 
 
 
@@ -72,5 +70,7 @@ def ask():
 if __name__ == "__main__":
 
     app.run(
+        host="0.0.0.0",
+        port=5000,
         debug=True
     )
