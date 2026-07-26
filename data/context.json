@@ -1,11 +1,5 @@
 [
     {
-        "time": "2026-07-25 23:34:33.327192",
-        "user": "what is agriculture",
-        "afrimind": "Agriculture is the practice of cultivating crops, raising animals, and managing natural resources to produce food and other products.",
-        "topic": "agriculture"
-    },
-    {
         "time": "2026-07-25 23:35:19.058556",
         "user": "what is renewable energy",
         "afrimind": "Renewable energy comes from natural sources like solar, wind and water.",
@@ -298,5 +292,11 @@
         "user": "what problems do farmers face",
         "afrimind": "Farmers face challenges such as climate change, drought, pests and diseases, poor markets, lack of finance, limited technology, high production costs, and soil degradation.",
         "topic": "face"
+    },
+    {
+        "time": "2026-07-26 07:28:18.933592",
+        "user": "what is AfriMind",
+        "afrimind": "AfriMind is an Artificial Intelligence project created to provide knowledge, solutions, and digital assistance for Africa.",
+        "topic": "afrimind"
     }
 ]
