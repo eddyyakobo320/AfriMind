@@ -1,106 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AfriMind AI</title>
 
 <style>
 
-body {
-
+*{
+    box-sizing:border-box;
     font-family: Arial, sans-serif;
-    background: #f1f5f9;
-    margin: 0;
+}
+
+body{
+
+    margin:0;
+    background:#f1f5f9;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
 }
 
 
-.header {
+.container{
 
-    background: #0f766e;
-    color: white;
-    text-align: center;
-    padding: 20px;
-
-}
-
-
-.container {
-
-    width: 80%;
-    margin: 30px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
+    width:100%;
+    max-width:900px;
+    height:95vh;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
 
 }
 
 
-.chat {
 
-    height: 400px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 10px;
+.header{
 
-}
-
-
-.user {
-
-    background: #dbeafe;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    text-align: right;
+    background:#0f766e;
+    color:white;
+    padding:20px;
+    text-align:center;
 
 }
 
 
-.ai {
+.header h1{
 
-    background: #dcfce7;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    text-align: left;
+    margin:0;
+    font-size:28px;
 
 }
 
 
-.input-area {
+.header p{
 
-    display: flex;
-    margin-top: 15px;
-
-}
-
-
-input {
-
-    flex: 1;
-    padding: 12px;
-    font-size: 16px;
+    margin:5px;
 
 }
 
 
-button {
 
-    padding: 12px 20px;
-    background: #0f766e;
-    color: white;
-    border: none;
-    cursor: pointer;
+.chat{
+
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
 
 }
 
 
-button:hover {
 
-    background: #115e59;
+.message{
+
+    padding:12px 16px;
+    margin:10px;
+    border-radius:15px;
+    max-width:75%;
+    line-height:1.5;
+
+}
+
+
+
+.user{
+
+    background:#0f766e;
+    color:white;
+    margin-left:auto;
+
+}
+
+
+
+.ai{
+
+    background:#e2e8f0;
+    color:#111827;
+
+}
+
+
+
+.input-area{
+
+    display:flex;
+    padding:15px;
+    border-top:1px solid #ddd;
+
+}
+
+
+
+input{
+
+    flex:1;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:16px;
+
+}
+
+
+
+button{
+
+    margin-left:10px;
+    padding:15px 25px;
+    border:none;
+    border-radius:10px;
+    background:#0f766e;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+
+button:hover{
+
+    background:#115e59;
 
 }
 
@@ -113,31 +161,31 @@ button:hover {
 <body>
 
 
+<div class="container">
+
+
 <div class="header">
 
 <h1>🌍 AfriMind AI</h1>
 
-<p>Building Intelligence for Africa</p>
-
-<p>Version 28.2</p>
+<p>Your Intelligent Assistant for Africa</p>
 
 </div>
 
 
 
-<div class="container">
+<div class="chat" id="chat">
 
 
-<div id="chat" class="chat">
+<div class="message ai">
 
-<div class="ai">
-
-🤖 AfriMind: Hello Edward, I am ready to help Africa.
+Hello 👋 I am AfriMind AI. Ask me anything about Africa, business, agriculture, health and technology.
 
 </div>
 
 
 </div>
+
 
 
 
@@ -145,14 +193,10 @@ button:hover {
 
 <input id="question" placeholder="Ask AfriMind...">
 
-<button onclick="ask()">
-
-Ask
-
-</button>
-
+<button onclick="ask()">Send</button>
 
 </div>
+
 
 
 </div>
@@ -165,41 +209,34 @@ Ask
 async function ask(){
 
 
-let input = document.getElementById("question");
+let input=document.getElementById("question");
 
-let question = input.value;
-
-
-if(question.trim()=="")
-return;
+let question=input.value;
 
 
-
-let chat = document.getElementById("chat");
+if(question=="") return;
 
 
 
-chat.innerHTML +=
+let chat=document.getElementById("chat");
 
-`
-<div class="user">
-👤 You: ${question}
+
+
+chat.innerHTML += `
+
+<div class="message user">
+${question}
 </div>
+
 `;
 
 
 
-chat.innerHTML +=
-
-`
-<div class="ai">
-🤖 AfriMind is thinking...
-</div>
-`;
+input.value="";
 
 
 
-let response = await fetch("/ask", {
+let response = await fetch("/ask",{
 
 method:"POST",
 
@@ -209,7 +246,7 @@ headers:{
 
 },
 
-body: JSON.stringify({
+body:JSON.stringify({
 
 question:question
 
@@ -219,25 +256,24 @@ question:question
 
 
 
-let data = await response.json();
+let data=await response.json();
 
 
 
-chat.innerHTML +=
+chat.innerHTML += `
 
-`
-<div class="ai">
-🤖 AfriMind: ${data.answer}
+<div class="message ai">
+
+${data.answer}
+
 </div>
+
 `;
 
 
 
-chat.scrollTop = chat.scrollHeight;
+chat.scrollTop=chat.scrollHeight;
 
-
-
-input.value="";
 
 
 }
